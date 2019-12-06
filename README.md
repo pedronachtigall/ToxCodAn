@@ -25,6 +25,7 @@ Decompress the tar.gz file:
 - [Bioperl](https://bioperl.org/)
 - [CodAn](https://github.com/pedronachtigall/CodAn/)
 - [NCBI-BLAST](https://www.ncbi.nlm.nih.gov/books/NBK279671/) (v2.9.0 or above)
+- [SignalP-4.1](http://www.cbs.dtu.dk/cgi-bin/sw_request?signalp+4.1)
 
 # Usage
 
