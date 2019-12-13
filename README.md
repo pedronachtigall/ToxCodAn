@@ -13,9 +13,11 @@ Getting Started
 
 # Installation
 
-Decompress the tar.gz file:
-```
+Download the master folder and follow the steps below:
 
+```
+unzip MITGARD-master.zip
+export PATH=$PATH:path/to/Venomancer-master/bin/
 ```
 
 
