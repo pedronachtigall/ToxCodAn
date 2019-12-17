@@ -1,4 +1,4 @@
-[venomancer_logo](/venomancer_logo.png)
+![venomancer_logo](/venomancer_logo.png)
 
 Venomancer
 ==========
