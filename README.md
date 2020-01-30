@@ -19,6 +19,11 @@ Download the master folder and follow the steps below:
 unzip Venomancer-master.zip
 export PATH=$PATH:path/to/Venomancer-master/bin/
 ```
+OR git clone the Venomancer respository and add the bin folder into your PATH:
+```
+git clone https://github.com/pedronachtigall/Venomancer.git
+export PATH=$PATH:path/to/Venomancer/bin/
+```
 
 # Requirements
 
