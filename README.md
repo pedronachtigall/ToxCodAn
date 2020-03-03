@@ -37,6 +37,12 @@ export PATH=$PATH:path/to/Venomancer/bin/
 
 Ensure that all requirements are working properly.
 
+# Models
+
+The model folder contains specific gHMM models and the toxinDB used in the Venomancer pipeline.
+
+Download the [models.zip](https://github.com/pedronachtigall/Venomancer/blob/master/models.zip) file, uncompress (```unzip models.zip```) and specify it to the ```-m``` option of Venomancer command line (```-m path/to/models/```).
+
 # Usage
 
 ```
@@ -69,7 +75,12 @@ Options:
                         coverage in the toxin filter step [default=80]
 ```
 
-Check our [tutorial](https://github.com/pedronachtigall/Venomancer/blob/master/TUTORIAL.md) to learn how to use Venomancer.
+Basic usage:
+```
+venomancer.py -t transcripts.fa -m path/to/models
+```
+
+Check our [tutorial](https://github.com/pedronachtigall/Venomancer/tree/master/tutorial) to learn how to use Venomancer.
 
 # Inputs
 Venomancer need the transcripts in [fasta format](https://en.wikipedia.org/wiki/FASTA_format) as input.
