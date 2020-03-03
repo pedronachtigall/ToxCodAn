@@ -24,6 +24,7 @@ The user can set several optional parameters to run Venomancer as desired:
 - ```-f int``` -> threshold value used as the minimum coverage in the pre-filter step [default = 90]
 - ```-F int``` -> threshold value used as the minimum coverage in the toxin filter step [default = 80]
 
-:warning:**Warning**
+
+:warning:**Warning**:warning:
 
 We strongly recommend to use the default options but paying attention to the ```-c``` option, which will decrease the running time of Venomancer proportionally as the number of threads being used.
