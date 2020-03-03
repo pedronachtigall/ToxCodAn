@@ -127,7 +127,7 @@ Nachtigall et al., under review
 License
 =======
 
-<!---[GNU GPLv3](https://www.gnu.org/licenses/gpl-3.0.html) -->
+[GNU GPLv3](https://www.gnu.org/licenses/gpl-3.0.html)
 
 Contact
 =======
@@ -137,3 +137,9 @@ To report bugs, to ask for help and to give any feedback, please contact **Pedro
 
 Frequently Asked Questions (FAQ)
 ================================
+
+- What Operation System (OS) do I need to use Venomancer?
+  - We tested Venomancer in Linux Ubuntu 16 and 18. However, we believe that Venomancer should work on any UNIX OS able to have all dependencies of Venomancer.
+ 
+- How long will take to Venomancer finish the analysis?
+  - We tested Venomancer using a personal computer (6-Core i7 with 16Gb memory) and 6 threads (```-c 6```), it took only 30 minutes to perform an analysis on more than 200,000 sequences. If the user has more threads available for use, the running time will decrease.
