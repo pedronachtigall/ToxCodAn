@@ -10,7 +10,6 @@ A quick tutorial to use Venomancer.
 Running Venomancer
 ==================
 
-Basic usage:
 ```
 venomancer.py -t Mfulv.fasta -m models/
 ```
