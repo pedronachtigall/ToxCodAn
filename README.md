@@ -37,6 +37,22 @@ export PATH=$PATH:path/to/Venomancer/bin/
 
 Ensure that all requirements are working properly.
 
+:warning: If the user wants to install Venomancer and all dependencies using [Conda environment](https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html), follow the steps below:
+- Create the environment:
+    - ```conda create -n venomancer_env python=3.7 biopython perl perl-bioperl perl-mce blast```
+- Git clone the Venomancer repository and add to your PATH:
+    - ```git clone https://github.com/pedronachtigall/Venomancer.git```
+    - ```export PATH=$PATH:path/to/Venomancer/bin/```
+- Git clone the CodAn repository and add to your PATH:
+    - ```git clone https://github.com/pedronachtigall/CodAn.git```
+    - ```export PATH=$PATH:path/to/CodAn/bin/```
+- Download the SignalP-4.1, decompress and add it to your PATH:
+    - ```tar -xzf signalp-4.1g.Linux.tar.gz```
+    - ```export PATH=$PATH:path/to/signalp-4.1/```
+- Then, run Venomancer as described in the "Usage" section.
+- To activate the environment to run Venomancer just use the command: ```conda activate venomancer_env```
+- To deactivate the environment just use the command: ```conda deactivate```
+
 # Models
 
 The model folder contains specific gHMM models and the toxinDB used in the Venomancer pipeline.
@@ -138,8 +154,8 @@ To report bugs, to ask for help and to give any feedback, please contact **Pedro
 Frequently Asked Questions (FAQ)
 ================================
 
-- What Operation System (OS) do I need to use Venomancer?
+**[Q1]** What Operation System (OS) do I need to use Venomancer?
   - We tested Venomancer in Linux Ubuntu 16 and 18. However, we believe that Venomancer should work on any UNIX OS able to have all dependencies of Venomancer.
  
-- How long will take to Venomancer finish the analysis?
+**[Q2]** How long will take to Venomancer finish the analysis?
   - We tested Venomancer using a personal computer (6-Core i7 with 16Gb memory) and 6 threads (```-c 6```), it took only 30 minutes to perform an analysis on more than 200,000 sequences. If the user has more threads available for use, the running time will decrease.
