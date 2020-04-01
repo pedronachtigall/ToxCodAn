@@ -27,3 +27,25 @@ The user can set several optional parameters to run Venomancer as desired:
 :warning:**Warning**:warning:
 
 We strongly recommend to use the default options but paying attention to the ```-c``` option, which will decrease the running time of Venomancer proportionally as the number of threads being used.
+
+Expected results
+================
+If Venomancer is running properly, the printed message at the terminal should be similar to the text in the ["tutorial_report.log"](https://github.com/pedronachtigall/Venomancer/blob/master/tutorial/tutorial_report.log). Moreover, the user can use the ```grep``` command to check the number of sequences in each output file as follow:
+
+```
+$ grep -c  ">" Venomancer_output/*.fasta
+venomancer_NonToxins_contigs.fasta:1169
+venomancer_PutativeToxins_cds.fasta:101
+venomancer_PutativeToxins_cds_SPfiltered.fasta:5
+venomancer_PutativeToxins_contigs.fasta:104
+venomancer_PutativeToxins_contigs_SPfiltered.fasta:5
+venomancer_PutativeToxins_pep_SPfiltered.fasta:5
+venomancer_Toxins_cds.fasta:104
+venomancer_Toxins_cds_RedundancyFiltered.fasta:101
+venomancer_Toxins_cds_SPfiltered.fasta:55
+venomancer_Toxins_cds_SPfiltered_RedundancyFiltered.fasta:55
+venomancer_Toxins_contigs.fasta:104
+venomancer_Toxins_contigs_SPfiltered.fasta:55
+venomancer_Toxins_pep.fasta:104
+venomancer_Toxins_pep_SPfiltered.fasta:55
+```
