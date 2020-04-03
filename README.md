@@ -155,7 +155,7 @@ Frequently Asked Questions (FAQ)
 ================================
 
 **[Q1]** What Operation System (OS) do I need to use Venomancer?
-  - We tested Venomancer in Linux Ubuntu 16 and 18. However, we believe that Venomancer should work on any UNIX OS able to have all dependencies of Venomancer.
+  - We tested Venomancer in Linux Ubuntu 16 and 18, and macOS Mojave and Catalina. However, we believe that Venomancer should work on any UNIX OS able to have all dependencies of Venomancer.
  
 **[Q2]** How long will take to Venomancer finish the analysis?
-  - We tested Venomancer using a personal computer (6-Core i7 with 16Gb memory) and 6 threads (```-c 6```), it took only 55 minutes to run the analysis using a dataset with 146,077 sequences. If the user has more threads available for use, the running time will decrease.
+  - We tested Venomancer using a personal computer (6-Core i7 with 16Gb memory) and 6 threads (```-c 6```), it took only 55 minutes to finish the analysis by using a de novo dataset with 146,077 sequences. If the user has more threads available for use, the running time will decrease.
