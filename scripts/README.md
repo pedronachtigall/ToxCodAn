@@ -16,5 +16,11 @@ Some scripts to help analyze the toxin genes identified by Venomancer.
     - Then, run "rps2gff" script: ```python rps2gff.py < blast_out.txt > domain_annotation.gff```
 --->
 
-- **ChimeraKiller**: script designed to detect chimeras and remove them from the CDSs identified in the Transcriptome Assembly.
-    - Usage: ```ChimeraKiller.py```
+- **NonToxins_Annotator.py**: script designed to annotate the NonToxins detected by the Venomancer pipeline.
+    - This script performs `blast` search (mandatory) and hmm search using `BUSCO` and `Pfam` models (optional).
+    - The use of a protein DB pre-compiled or designed with `makeblastdb` can be set with the `-b` option.
+        - The user can set one or more DBs by using a comma "," among DBs, which can be any number (from 1 to n).
+    - Optionally, the user can set any of the [BUSCO models](https://busco.ezlab.org/busco_v4_data.html) to perform hmm search by using the option `-b`.
+    - Optionally, the user can set the [Pfam models](https://pfam.xfam.org/) to perform hmm search by using the option `-p`. (link for download the pfam.hmm: ftp://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.hmm.gz)
+    - This script takes advantage of MultiThreading by using the option `-c`.
+    - Usage: ```NonToxins_Annotator.py -t predicted_CDS.fasta -b path/to/db1,...,path/to/dbn -b path/to/busco/odb -p path/to/pfam.hmm -c N```
