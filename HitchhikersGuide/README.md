@@ -652,11 +652,10 @@ parallel -a list.txt -j 2 --verbose "echo {}
 For nontoxin annotation, we will take the Nontoxin output from
 `Venomancer` (`Nontoxins_contigs.fasta`) and use
 [`CodAn`](https://github.com/pedronachtigall/CodAn) with `Venomancer`’s
-`NonToxins_annotator.py`. First, we will use `CodAn` to predict coding
+`NonToxinsAnnotation.py`. First, we will use `CodAn` to predict coding
 sequence (CDS) regions from the contigs, using the [VERTEBRATE
 model](https://github.com/pedronachtigall/CodAn/blob/master/models/VERT_full.zip).
-The `CodAn` predicted CDS will be used as input for `Venomancer`’s
-[`NonToxins_annotator.py`](https://github.com/pedronachtigall/Venomancer/tree/master/scripts/NonToxins_Annotator.py)
+The `CodAn` predicted CDS will be used as input for `Venomancer`’s `NonToxinsAnnotation.py`
 which uses `blast`, `BUSCO` (optional), and `Pfam` (optional) to
 annotate the predicted CDSs. This step keeps the uncharacterized
 proteins for potential novel toxin discovery.
@@ -683,10 +682,17 @@ parallel -a list.txt -j 2 --verbose "echo {}
   unzip path/to/CodAn/models/VERT_full.zip
   codan.py -t {}.venomancer_NonToxins_contigs.fasta -m VERT_full/ -o {}_NonToxins_codan
   mv {}_NonToxins_codan/ORF_sequences.fasta {}_NonToxins_CDS.fasta
-  NonToxins_Annotator.py -t {}_NonToxins_CDS.fasta -d path/to/swissprot -b path/to/BUSCO/odb -p path/to/Pfam-A.hmm
+  NonToxinsAnnotation.py -t {}_NonToxins_CDS.fasta -d path/to/swissprot -b path/to/BUSCO/odb -p path/to/Pfam-A.hmm
   mv Annotation_output/annotated.fa {}_NonToxins_annotated.fasta"
 conda deactivate
 ```
+
+:warning: Alternatively, if the user wants to directly perform the NonToxins annotation within the Venomancer pipeline just follow the steps below:
+ - Enter in the ["non_toxin_models"](https://github.com/pedronachtigall/Venomancer/tree/master/non_toxin_models)
+  - ```cd path/to/venomancer/non_toxin_models/```
+ - Uncompress the proteinDB (```tar xjf pepDB.tar.bz2```) and the CodAn model for Vertebrates (```gzip -d VERT_full.zip```)
+ - Then, use the option ```-n``` in the venomancer command line to automatically perform the NonToxin annotation:
+  - ```venomancer.py -s sampleID -t assembly.fasta -o out_venomancer -m /path/to/models -c 4 -n path/to/non_toxin_models/```
 
 With both toxins and nontoxins annotated, we can combine them together
 in preparation for checking for chimeras
