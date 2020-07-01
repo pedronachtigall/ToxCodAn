@@ -81,6 +81,10 @@ Options:
   -p boolean value, --signalp=boolean value
                         Optional - turn on/off the signalP filtering step, use
                         True to turn on or False to turn off [default=True]
+  -n path, --nontoxinannotation=path
+                        Optional - path to folder containing the protein DB
+                        and CodAn model to be used in the NonToxin Annotation
+                        pipeline [default=None]
   -c int, --cpu=int     Optional - number of threads to be used in each step
                         [default=1]
   -f int, --covprefilter=int
@@ -159,3 +163,7 @@ Frequently Asked Questions (FAQ)
  
 **[Q2]** How long will take to Venomancer finish the analysis?
   - We tested Venomancer using a personal computer (6-Core i7 with 16Gb memory) and 6 threads (```-c 6```), it took only 55 minutes to finish the analysis by using a de novo dataset with 146,077 sequences. If the user has more threads available for use, the running time will decrease.
+
+**[Q3]** Is Venomancer only available for snake species? :snake:
+  - Unfortunatley, we only acquired sufficient trainning data for snake toxins. But we are working to get more training data to other venomous taxa and make them available soon. Stay tune!
+  
