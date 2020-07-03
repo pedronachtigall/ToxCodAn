@@ -137,6 +137,31 @@ NonToxins -> sequences with very low probability of being toxins
 RedundancyFiltered -> CDSs with 100% identity filtered
 SPfiltered -> signalP filtered sequences (optional step)
 ```
+
+Annotation of Non Toxin transcripts
+===================================
+
+The user can take advantages of a simple script designed to annotate Non Toxin transcripts named **NonToxinAnnotation.py**. Follow the steps below:
+- First, perform the CDS prediction with the "VERT_full" model using [CodAn](https://github.com/pedronachtigall/CodAn) designed by [Nachtigall et al. (2020)](https://doi.org/10.1093/bib/bbaa045)
+    - ```codan.py -t path/to/NonToxins_contigs.fasta -m path/to/VERT_full/ -o path/to/output/NonToxins_codan/ -c N```
+    - We have a copy of the "VERT_full" in the "non_toxin_models" folder: ```cd path/to/non_toxin_models/``` and ```gzip -d VERT_full```
+- Then, use the ```NonToxinAnnotation.py``` on the predicted CDSs.
+- This script performs `blast` search (mandatory) and hmm search using `BUSCO` and `Pfam` models (optional).
+- The use of a protein DB pre-compiled or designed with `makeblastdb` can be set with the `-b` option.
+    - The user can use a DB such as Swissprot and/or the designed protein DB available at the "non_toxin_models" folder (just uncompress the DB ```tar xjf pepDB.tar.bz2```).
+    - The user can set one or more DBs by using a comma "," among DBs, which can be any number (from 1 to n).
+- Optionally, the user can set any of the [BUSCO models](https://busco.ezlab.org/busco_v4_data.html) to perform hmm search by using the option `-b`.
+- Optionally, the user can set the [Pfam models](https://pfam.xfam.org/) to perform hmm search by using the option `-p`. (link for download the pfam.hmm: ftp://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.hmm.gz)
+- This script takes advantage of MultiThreading by using the option `-c`.
+- Usage: ```NonToxins_Annotator.py -t predicted_CDS.fasta -b path/to/db1,...,path/to/dbn -b path/to/busco/odb -p path/to/pfam.hmm -c N```
+
+:warning: Alternatively, if the user wants to directly perform the NonToxins annotation within the Venomancer pipeline just follow the steps below:
+- Enter in the ["non_toxin_models"](https://github.com/pedronachtigall/Venomancer/tree/master/non_toxin_models)
+    - ```cd path/to/venomancer/non_toxin_models/```
+- Uncompress the proteinDB (```tar xjf pepDB.tar.bz2```) and the CodAn model for Vertebrates (```gzip -d VERT_full.zip```)
+- Then, use the option ```-n``` in the venomancer command line to automatically perform the NonToxin annotation:
+    - ```venomancer.py -s sampleID -t assembly.fasta -o out_venomancer -m /path/to/models -c 4 -n path/to/non_toxin_models/```
+
 Reference
 =========
 
