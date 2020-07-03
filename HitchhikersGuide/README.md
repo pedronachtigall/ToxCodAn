@@ -688,11 +688,11 @@ conda deactivate
 ```
 
 :warning: Alternatively, if the user wants to directly perform the NonToxins annotation within the Venomancer pipeline just follow the steps below:
- - Enter in the ["non_toxin_models"](https://github.com/pedronachtigall/Venomancer/tree/master/non_toxin_models)
-  - ```cd path/to/venomancer/non_toxin_models/```
- - Uncompress the proteinDB (```tar xjf pepDB.tar.bz2```) and the CodAn model for Vertebrates (```gzip -d VERT_full.zip```)
- - Then, use the option ```-n``` in the venomancer command line to automatically perform the NonToxin annotation:
-  - ```venomancer.py -s sampleID -t assembly.fasta -o out_venomancer -m /path/to/models -c 4 -n path/to/non_toxin_models/```
+- Enter in the ["non_toxin_models"](https://github.com/pedronachtigall/Venomancer/tree/master/non_toxin_models)
+    - ```cd path/to/venomancer/non_toxin_models/```
+- Uncompress the proteinDB (```tar xjf pepDB.tar.bz2```) and the CodAn model for Vertebrates (```gzip -d VERT_full.zip```)
+- Then, use the option ```-n``` in the venomancer command line to automatically perform the NonToxin annotation:
+    - ```venomancer.py -s sampleID -t assembly.fasta -o out_venomancer -m /path/to/models -c 4 -n path/to/non_toxin_models/```
 
 With both toxins and nontoxins annotated, we can combine them together
 in preparation for checking for chimeras
