@@ -1,6 +1,6 @@
 ![](./figures/venomancer_logo.png)
 
-# The Hitchhiker's Guide to Venom Gland Transcriptomics
+# The Guide to Venom Gland Transcriptomics
 ### Pedro G. Nachtigall, Rhett M. Rautsaw, Schyler Ellsworth, Andrew J. Mason, Darin R. Rokyta, Christopher L. Parkinson, Inácio L.M. Junqueira-de-Azevedo
 
 # Table of Contents
