@@ -103,7 +103,9 @@ venomancer.py -t transcripts.fa -m path/to/models
 Check our [tutorial](https://github.com/pedronachtigall/Venomancer/tree/master/tutorial) to learn how to use Venomancer.
 
 # Inputs
-Venomancer need the transcripts in [fasta format](https://en.wikipedia.org/wiki/FASTA_format) as input.
+Venomancer has the following inputs as mandatory:
+ - Transcripts in [fasta format](https://en.wikipedia.org/wiki/FASTA_format) through the ```-t``` option.
+ - The uncompressed [models](https://github.com/pedronachtigall/Venomancer/blob/master/models.zip) folder through the ```-m``` option
 
 # Outputs
 
@@ -190,5 +192,7 @@ Frequently Asked Questions (FAQ)
   - We tested Venomancer using a personal computer (6-Core i7 with 16Gb memory) and 6 threads (```-c 6```), it took only 55 minutes to finish the analysis by using a de novo dataset with 146,077 sequences. If the user has more threads available for use, the running time will decrease.
 
 **[Q3]** Is Venomancer only available for snake species? :snake:
-  - Unfortunatley, we only acquired sufficient trainning data for snake toxins. But we are working to get more training data to other venomous taxa and make them available soon. Stay tune!
-  
+  - Unfortunately, we only acquired sufficient trainning data for snake toxins. But we are working to get more training data to other venomous taxa and make them available soon. Stay tune!
+
+**[Q4]** When was the Databases in the Venomancer last updated?
+  - Our models and databases used in the annoations were last updated in September 2019.
