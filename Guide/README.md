@@ -12,7 +12,7 @@
     -   [Renaming Files](#renaming-files)
     -   [Bash Profile](#bash-profile)
 -   [Setup/Installation](#setupinstallation)
--   [The Hitchhiker’s Guide](#the-hitchhikers-guide)
+-   [The Guide](#the-guide)
     -   [Downloading Data](#downloading-data)
     -   [Pre-Processing](#pre-processing)
     -   [Transcriptome Assembly](#transcriptome-assembly)
@@ -27,7 +27,7 @@
 Introduction
 ============
 
-The Hitchhiker’s Guide to Venom Gland Transcriptomics is part of
+The Guide to Venom Gland Transcriptomics is part of
 [Venomancer](https://github.com/pedronachtigall/Venomancer) and designed
 to walk you through our recommended bioinformatic pipeline. If you are
 new to bioinformatics, don’t panic! There are some resources and
@@ -122,7 +122,7 @@ parallel -a list.txt "echo {}"
 ```
 
 We will be providing lists to the command `parallel` in nearly every
-step of the Hitchhiker’s Guide.
+step of the Guide.
 
 ### Piping & Regular Expressions
 
@@ -220,7 +220,7 @@ mv sample_3.fastq.gz sample-003.fastq.gz
 
 ### Bash Profile
 
-Each step of the Hitchhiker’s Guide assumes that you have already
+Each step of the Guide assumes that you have already
 installed all the programs that you need and it can be easily run by
 just typing in the appropriate command (*i.e.*, `trinity`). Lets talk
 about how to make that assumption true.
@@ -372,7 +372,7 @@ echo 'export PATH=$PATH:path/to/signalp-4.1/' >> ~/.bash_profile
 source ~/.bash_profile
 ```
 
-The Hitchhiker’s Guide
+The Guide
 ======================
 
 ![](./figures/methods_flowchart.png)
@@ -380,8 +380,7 @@ The Hitchhiker’s Guide
 Downloading Data
 ----------------
 
-We will use the *Bothrops alternatus* data as an example for the
-Hitchhiker’s Guide. You can download these data with `wget` or use
+We will use the *Bothrops alternatus* data as an example for the Guide. You can download these data with `wget` or use
 `fastq-dump` from the `sra-toolkit`.
 
 ``` bash
