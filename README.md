@@ -194,5 +194,5 @@ Frequently Asked Questions (FAQ)
 **[Q3]** Is Venomancer only available for snake species? :snake:
   - Unfortunately, we only acquired sufficient trainning data for snake toxins. But we are working to get more training data to other venomous taxa and make them available soon. Stay tune!
 
-**[Q4]** When was the Databases in the Venomancer last updated?
-  - Our models and databases used in the annoations were last updated in September 2019.
+**[Q4]** When was the Venomancer's Databases last updated?
+  - Our models and databases used for annotations were last updated in September 2020.
