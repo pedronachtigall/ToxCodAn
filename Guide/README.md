@@ -662,9 +662,9 @@ proteins for potential novel toxin discovery.
 -   Download the SwissprotDB from the NCBI ftp site
     (<a href="ftp://ftp.ncbi.nlm.nih.gov/blast/db/swissprot.tar.gz" class="uri">ftp://ftp.ncbi.nlm.nih.gov/blast/db/swissprot.tar.gz</a>).
     Decompress it `tar -xvf swissprot.tar.gz`.
--   If the user wants, more than one proteinDB can be set in the `-b`
+-   If the user wants, more than one proteinDB can be set in the `-d`
     option by using a comma “,” separating the DBs (e.g.,
-    path/to/db1,path/to/db2,…,path/to/dbn).
+    path/to/db1,path/to/db2,…,path/to/dbN).
 -   (Optionally) Download the desired BUSCO models
     [here](https://busco.ezlab.org/busco_v4_data.html) and decompress
     the odb with `tar -xvf busco_odb.tar.gz`
