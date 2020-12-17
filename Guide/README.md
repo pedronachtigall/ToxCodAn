@@ -1025,14 +1025,17 @@ DESeq2<-DESeq(DESeq2,fitType = "local")
 DESeq2_res <- as.data.frame(results(DESeq2,alpha=0.05))
 table<-DESeq2_res[DESeq2_res$padj<0.05,]
 table<-head(table[complete.cases(table),c(2,6)])
-#															log2FoldChange		padj
-#Ccera-CLP2057ext_CTL-9_ngenContig2269_-_CDS				 0.29425216			0.02338078
-#Ccera-CLP2105ext_MYO-2_extContig94_-_CDS					 0.39747275			0.02338078
-#Ccera-CLP2057_SVMPIII_extContig339_-_CDS					-0.28421367			0.02338078
-#Ccera-CLP2057ext_SVMPIII-2_extContig390_-_CDS				-0.17398424			0.02338078
-#Ccera-CLP2057ext_ADH_ngenContig195_-_CDS					-0.06053533			0.03895370
-#Ccera-CLP2065ngen_AminoAcidTrans1_ngenContig5623_-_CDS		 0.12298525			0.04642247
+```
+| gene_id													| log2FC		| padj		 |
+|-----------------------------------------------------------|--------------:|-----------:|
+| Ccera-CLP2057ext_CTL-9_ngenContig2269_-_CDS				|  0.29425216	| 0.02338078 |
+| Ccera-CLP2105ext_MYO-2_extContig94_-_CDS					|  0.39747275	| 0.02338078 |
+| Ccera-CLP2057_SVMPIII_extContig339_-_CDS					| -0.28421367	| 0.02338078 |
+| Ccera-CLP2057ext_SVMPIII-2_extContig390_-_CDS				| -0.17398424	| 0.02338078 |
+| Ccera-CLP2057ext_ADH_ngenContig195_-_CDS					| -0.06053533	| 0.03895370 |
+| Ccera-CLP2065ngen_AminoAcidTrans1_ngenContig5623_-_CDS	| 	 0.12298525	| 0.04642247 |
 
+```
 ## Phylogenetic Comparison
 DESeq2<-DESeqDataSetFromMatrix(DESeq_df,metadata, design = ~NontoxPhylo)
 DESeq2<-DESeq(DESeq2)
@@ -1041,14 +1044,17 @@ DESeq2_res <- as.data.frame(results(DESeq2,
 									alpha=0.05))
 table<-DESeq2_res[DESeq2_res$padj<0.05,]
 table<-head(table[complete.cases(table),c(2,6)])
-#															log2FoldChange		padj
-#Ccera-KW1744ext_BPP-1a_extContig132_-_CDS					 7.075668			5.189999e-08
-#Ccera-CLP2057ext_PLA2-1a_extContig89_-_CDS					 2.148142			4.467611e-02
-#Ccera-CLP2105ext_SVMPII-4_extContig172_-_CDS				-3.352636			3.900254e-02
-#Ccera-CLP2105ngen_SVSP-10_ngenContig295_-_CDS				-2.698754			1.105192e-02
-#Ccera-CLP2057ext_VEGF-1_extContig1_-_CDS					 2.441901			4.789369e-02
-#Ccera-CLP2071ngen_39SrpL24_ngenContig6518_-_CDS			 2.442785			2.608682e-07
 ```
+
+| gene_id											| log2FC	| padj		   |
+|---------------------------------------------------|----------:|-------------:|
+| Ccera-KW1744ext_BPP-1a_extContig132_-_CDS			|  7.075668	| 5.189999e-08 |
+| Ccera-CLP2057ext_PLA2-1a_extContig89_-_CDS		|  2.148142	| 4.467611e-02 |
+| Ccera-CLP2105ext_SVMPII-4_extContig172_-_CDS		| -3.352636	| 3.900254e-02 |
+| Ccera-CLP2105ngen_SVSP-10_ngenContig295_-_CDS		| -2.698754	| 1.105192e-02 |
+| Ccera-CLP2057ext_VEGF-1_extContig1_-_CDS			|  2.441901	| 4.789369e-02 |
+| Ccera-CLP2071ngen_39SrpL24_ngenContig6518_-_CDS	|  2.442785	| 2.608682e-07 |
+
 
 ### edgeR
 
@@ -1066,12 +1072,15 @@ fit <- glmFit(dispersion,design)
 edgeR_res<-as.data.frame(topTags(glmLRT(fit,coef="SVL_cm"),n=Inf,sort.by="none"))
 table<-edgeR_res[edgeR_res$FDR<0.05,]
 table<-head(table[complete.cases(table),c(1,5)])
-#gene_id													logFC			FDR
-#Ccera-CLP2057ext_CTL-9_ngenContig2269_-_CDS				 0.2943580		0.02230040
-#Ccera-CLP2057ext_SVMPIII-2_extContig390_-_CDS				-0.1744778		0.03014379
-#Ccera-CLP2057ext_NucRec4A1_ngenContig2966_-_CDS			-0.1933113		0.02230040
+```
 
+| gene_id											| logFC			| FDR		 |
+|---------------------------------------------------|--------------:|-----------:|
+| Ccera-CLP2057ext_CTL-9_ngenContig2269_-_CDS		|  0.2943580	| 0.02230040 |
+| Ccera-CLP2057ext_SVMPIII-2_extContig390_-_CDS		| -0.1744778	| 0.03014379 |
+| Ccera-CLP2057ext_NucRec4A1_ngenContig2966_-_CDS	| -0.1933113	| 0.02230040 |
 
+```
 # Phylogenetic Comparison
 design <- model.matrix(~NontoxPhylo, data=edgeR_df$samples)
 dispersion <- estimateDisp(edgeR_df,design)
@@ -1081,11 +1090,12 @@ edgeR_res<-as.data.frame(topTags(glmLRT(fit,
 										n=Inf,sort.by="none"))
 table<-edgeR_res[edgeR_res$FDR<0.05,]
 table<-head(table[complete.cases(table),c(1,5)])
-#gene_id													logFC			FDR
-#Ccera-KW1744ext_BPP-1a_extContig132_-_CDS					-3.483285		3.416361e-06
-#Ccera-CLP2057ext_CTL-5_extContig12_-_CDS					-2.873082		5.439565e-04
-#Ccera-CLP2105ext_MYO-2_extContig94_-_CDS					 9.956143		4.379644e-12
-#Ccera-CLP2071ngen_39SrpL24_ngenContig6518_-_CDS			-2.073622		1.091375e-06
-#Ccera-CLP2057ext_3bHDDIsom_ngenContig4815_-_CDS			-2.327748		8.408196e-04
-#Ccera-CLP2071ngen_ADPRibosyl1-2_ngenContig5670_-_CDS		 0.000000		6.485014e-34
 ```
+| gene_id												| logFC		| FDR		   |
+|-------------------------------------------------------|----------:|-------------:|
+| Ccera-KW1744ext_BPP-1a_extContig132_-_CDS				| -3.483285	| 3.416361e-06 |
+| Ccera-CLP2057ext_CTL-5_extContig12_-_CDS				| -2.873082	| 5.439565e-04 |
+| Ccera-CLP2105ext_MYO-2_extContig94_-_CDS				|  9.956143	| 4.379644e-12 |
+| Ccera-CLP2071ngen_39SrpL24_ngenContig6518_-_CDS		| -2.073622	| 1.091375e-06 |
+| Ccera-CLP2057ext_3bHDDIsom_ngenContig4815_-_CDS		| -2.327748	| 8.408196e-04 |
+| Ccera-CLP2071ngen_ADPRibosyl1-2_ngenContig5670_-_CDS	|  0.000000	| 6.485014e-34 |
