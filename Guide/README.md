@@ -896,13 +896,13 @@ rownames(samples) <- samples$ID
 
 # Log-transforming data
 lnToxins <- TPM_df2 %>% filter(class == "Toxin") %>% 
-						mutate_if(is.numeric,log) %>% 
-						arrange(desc(Average))
+	mutate_if(is.numeric,log) %>% 
+	arrange(desc(Average))
 rownames(lnToxins) <- lnToxins$gene_id
 
 png("figures/heatmap_toxins.png", width=480, height=720)
 pheatmap(lnToxins[,4:11], cluster_rows=F, show_rownames=F,cluster_cols=T, 
-		 annotation_col=samples[,2:5], annotation_legend=T)
+	annotation_col=samples[,2:5], annotation_legend=T)
 dev.off()
 ```
 
@@ -914,8 +914,8 @@ dev.off()
 > ```
 > library(compositions)
 > clrToxins <- TPM_df2 %>% filter(class == "Toxin") %>% 
-> 						mutate_if(is.numeric,clr) %>% 
-> 						arrange(desc(Average))
+> 	mutate_if(is.numeric,clr) %>% 
+> 	arrange(desc(Average))
 > rownames(clrToxins) <- lnToxins$gene_id
 > ```
 
@@ -929,8 +929,8 @@ Tree<-read.tree(file="./example_data/Ccera-Phylogeny.nwk")
 
 library(phytools)
 phylo.heatmap(Tree, t(lnToxins[,4:11]), fsize=c(1,0.8,1), standardize=F, labels=F,
-			  split=c(0.3,0.7), ylim=c(-0.25,1.25), grid=T,
-			  colors=colorRampPalette(rev(brewer.pal(n = 7,name="RdYlBu")))(100))
+	split=c(0.3,0.7), ylim=c(-0.25,1.25), grid=T,
+	colors=colorRampPalette(rev(brewer.pal(n = 7,name="RdYlBu")))(100))
 ```
 
 <p align="center">
@@ -947,8 +947,8 @@ PCA_df<-data.frame(samples,PCA$x)
 contribs<-round((PCA$sdev^2/sum(PCA$sdev^2))*100,2)
 
 ggscatter(PCA_df,"PC1","PC2",color="NontoxPhylo",fill="NontoxPhylo",size=8,
-		  ellipse = T, ellipse.level = 0.95, ellipse.type = "norm",
-		  xlab = paste0("PC1 (",contribs[1],"%)"), ylab=paste0("PC2 (",contribs[2],"%)"))
+	ellipse = T, ellipse.level = 0.95, ellipse.type = "norm",
+	xlab = paste0("PC1 (",contribs[1],"%)"), ylab=paste0("PC2 (",contribs[2],"%)"))
 ```
 
 <p align="center">
@@ -961,21 +961,21 @@ We can also do each of these things for each toxin family instead of individual 
 ```{r}
 # Summing data by toxin family
 TPM_family_df <- TPM_df2 %>% 
-				filter(class=="Toxin") %>%
-				group_by(toxin_family,class) %>% 
-				summarize_if(is.numeric,sum) %>%
-				arrange(desc(Average)) %>% ungroup()
+	filter(class=="Toxin") %>%
+	group_by(toxin_family,class) %>% 
+	summarize_if(is.numeric,sum) %>%
+	arrange(desc(Average)) %>% ungroup()
 TPM_family_df <- as.data.frame(TPM_family_df)
 rownames(TPM_family_df) <- TPM_family_df$toxin_family
 
 # Log transform
 lnClasses <- as.data.frame(TPM_family_df) %>%
-			mutate_if(is.numeric,log) %>%
-			arrange(desc(Average))
+	mutate_if(is.numeric,log) %>%
+	arrange(desc(Average))
 rownames(lnClasses) <- lnClasses$toxin_family
 
 pheatmap(lnClasses[,3:10], cluster_rows=F, show_rownames=T,cluster_cols=T, 
-		 annotation_col=samples[,2:5], annotation_legend=T)
+	annotation_col=samples[,2:5], annotation_legend=T)
 ```
 
 <p align="center">
@@ -997,7 +997,7 @@ library(BiocManager)
 packages<-c("DESeq2","edgeR")
 installed_packages <- packages %in% rownames(installed.packages())
 if (any(installed_packages == FALSE)) {
-  BiocManager::install(packages[!installed_packages])
+	BiocManager::install(packages[!installed_packages])
 }
 lapply(packages, library, character.only = TRUE)
 ```
@@ -1009,14 +1009,14 @@ Counts_df <- read_csv("./example_data/Ccera_rsem_counts.csv")
 Counts_df <- Counts_df %>% mutate_if(is.character,as.factor)
 
 Counts_class_df<-as.data.frame(Counts_df %>% group_by(toxin_class,class) %>% 
-							   summarize_if(is_numeric,sum))
+	summarize_if(is_numeric,sum))
 rownames(Counts_class_df)<-Counts_class_df$toxin_class
 
 DESeq_df<-as.data.frame(Counts_df[,4:11])
 rownames(DESeq_df)<-Counts_df$gene_id
 DESeq_df<-as.matrix(DESeq_df)
 for (i in 1:ncol(DESeq_df)){
-  DESeq_df[,i]<-as.integer(DESeq_df[,i])
+	DESeq_df[,i]<-as.integer(DESeq_df[,i])
 }
 
 ## SVL Comparison
@@ -1040,8 +1040,8 @@ table<-head(table[complete.cases(table),c(2,6)])
 DESeq2<-DESeqDataSetFromMatrix(DESeq_df,metadata, design = ~NontoxPhylo)
 DESeq2<-DESeq(DESeq2)
 DESeq2_res <- as.data.frame(results(DESeq2, 
-									contrast=c("NontoxPhylo","S_Mojave","N_Mojave"),
-									alpha=0.05))
+	contrast=c("NontoxPhylo","S_Mojave","N_Mojave"),
+	alpha=0.05))
 table<-DESeq2_res[DESeq2_res$padj<0.05,]
 table<-head(table[complete.cases(table),c(2,6)])
 ```
@@ -1086,8 +1086,8 @@ design <- model.matrix(~NontoxPhylo, data=edgeR_df$samples)
 dispersion <- estimateDisp(edgeR_df,design)
 fit <- glmFit(dispersion,design)
 edgeR_res<-as.data.frame(topTags(glmLRT(fit,
-										coef=c("NontoxPhyloN_Mojave","NontoxPhyloS_Mojave")),
-										n=Inf,sort.by="none"))
+	coef=c("NontoxPhyloN_Mojave","NontoxPhyloS_Mojave")),
+	n=Inf,sort.by="none"))
 table<-edgeR_res[edgeR_res$FDR<0.05,]
 table<-head(table[complete.cases(table),c(1,5)])
 ```
