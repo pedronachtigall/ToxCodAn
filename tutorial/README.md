@@ -42,10 +42,10 @@ toxcodan_PutativeToxins_contigs_SPfiltered.fasta:5
 toxcodan_PutativeToxins_pep_SPfiltered.fasta:5
 toxcodan_Toxins_cds.fasta:104
 toxcodan_Toxins_cds_RedundancyFiltered.fasta:101
-toxcodan_Toxins_cds_SPfiltered.fasta:55
-toxcodan_Toxins_cds_SPfiltered_RedundancyFiltered.fasta:55
+toxcodan_Toxins_cds_SPfiltered.fasta:102
+toxcodan_Toxins_cds_SPfiltered_RedundancyFiltered.fasta:99
 toxcodan_Toxins_contigs.fasta:104
-toxcodan_Toxins_contigs_SPfiltered.fasta:55
+toxcodan_Toxins_contigs_SPfiltered.fasta:102
 toxcodan_Toxins_pep.fasta:104
-toxcodan_Toxins_pep_SPfiltered.fasta:55
+toxcodan_Toxins_pep_SPfiltered.fasta:102
 ```
