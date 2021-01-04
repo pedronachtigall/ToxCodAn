@@ -1,10 +1,37 @@
-Building a new DB, current time: 03/30/2020 17:40:03
-New DB name:   Venomancer_output/blastDB/WC
+
+▄▄▄█████▓ ▒█████  ▒██   ██▒ ▄████▄   ▒█████  ▓█████▄  ▄▄▄       ███▄    █
+▓  ██▒ ▓▒▒██▒  ██▒▒▒ █ █ ▒░▒██▀ ▀█  ▒██▒  ██▒▒██▀ ██▌▒████▄     ██ ▀█   █
+▒ ▓██░ ▒░▒██░  ██▒░░  █   ░▒▓█    ▄ ▒██░  ██▒░██   █▌▒██  ▀█▄  ▓██  ▀█ ██▒
+░ ▓██▓ ░ ▒██   ██░ ░ █ █ ▒ ▒▓▓▄ ▄██▒▒██   ██░░▓█▄   ▌░██▄▄▄▄██ ▓██▒  ▐▌██▒
+  ▒██▒ ░ ░ ████▓▒░▒██▒ ▒██▒▒ ▓███▀ ░░ ████▓▒░░▒████▓  ▓█   ▓██▒▒██░   ▓██░
+  ▒ ░░   ░ ▒░▒░▒░ ▒▒ ░ ░▓ ░░ ░▒ ▒  ░░ ▒░▒░▒░  ▒▒▓  ▒  ▒▒   ▓▒█░░ ▒░   ▒ ▒
+    ░      ░ ▒ ▒░ ░░   ░▒ ░  ░  ▒     ░ ▒ ▒░  ░ ▒  ▒   ▒   ▒▒ ░░ ░░   ░ ▒░
+  ░      ░ ░ ░ ▒   ░    ░  ░        ░ ░ ░ ▒   ░ ░  ░   ░   ▒      ░   ░ ░
+             ░ ░   ░    ░  ░ ░          ░ ░     ░          ░  ░         ░
+                           ░                  ░
+
+
+        
+
+2021-01-04 15:06:31 >>>> starting ToxCodAn (v1.0 January 2021)...
+	transcripts file -> Mfulv.fasta
+	Output files and folders -> TESTE/
+	Models folder -> ../models/
+	signalP filter ->  True
+	Number of threads -> 6
+
+2021-01-04 15:06:31 >>>> performing pre-filter step...
+
+
+Building a new DB, current time: 01/04/2021 15:06:32
+New DB name:   /home/nachtigall/Desktop/posdoc_butantan/Venomancer/TSA_test/TESTE/blastDB/WC
 New DB title:  Mfulv.fasta
 Sequence type: Nucleotide
 Keep MBits: T
 Maximum file size: 1000000000B
-Adding sequences from FASTA; added 1377 sequences in 0.10224 seconds.
+Adding sequences from FASTA; added 1377 sequences in 0.0400901 seconds.
+
+2021-01-04 15:09:49 >>>> performing toxin prediction...
 
   _____           _  ___        
  /  __ \         | |/ _ \       
@@ -14,23 +41,22 @@ Adding sequences from FASTA; added 1377 sequences in 0.10224 seconds.
   \____/\___/ \__,_\_| |_/_| |_|
                           
         
-2020-03-30 17:45:09 >>>> starting CodAn (v1.0 September 2019)...
-	transcript file -> Venomancer_output/PreFilter_WC.fa
+2021-01-04 15:09:49 >>>> starting CodAn (v1.0 September 2019)...
+	transcript file -> TESTE/PreFilter_WC.fa
 	model -> ../models/TOXIN
 	strand prediction -> both
-	number of threads -> 8
-2020-03-30 17:45:09 >>>> CDS prediction...
-2020-03-30 17:45:14 >>>> retrieving sequences...
+	number of threads -> 6
+2021-01-04 15:09:49 >>>> CDS prediction...
+2021-01-04 15:09:51 >>>> retrieving sequences...
 	number of transcripts -> 208
 	number of predictions -> 174
 		predictions at plus strand -> 174
 		predictions at minus strand -> 0
-2020-03-30 17:45:14 >>>> prediction finished!
-	CDS -> Venomancer_output/TOXIN_out/ORF_sequences.fasta
-	CDS translated -> Venomancer_output/TOXIN_out/PEP_sequences.fasta
-	3'UTR -> Venomancer_output/TOXIN_out/3utr_sequences.fasta
-	5'UTR -> Venomancer_output/TOXIN_out/5utr_sequences.fasta
-	GTF file -> Venomancer_output/TOXIN_out/annotation.gtf
+2021-01-04 15:09:51 >>>> prediction finished!
+	CDS -> TESTE/TOXIN_out/ORF_sequences.fasta
+	3'UTR -> TESTE/TOXIN_out/3utr_sequences.fasta
+	5'UTR -> TESTE/TOXIN_out/5utr_sequences.fasta
+	GTF file -> TESTE/TOXIN_out/annotation.gtf
 
   _____           _  ___        
  /  __ \         | |/ _ \       
@@ -40,23 +66,22 @@ Adding sequences from FASTA; added 1377 sequences in 0.10224 seconds.
   \____/\___/ \__,_\_| |_/_| |_|
                           
         
-2020-03-30 17:45:14 >>>> starting CodAn (v1.0 September 2019)...
-	transcript file -> Venomancer_output/PreFilter_WC.fa
+2021-01-04 15:09:51 >>>> starting CodAn (v1.0 September 2019)...
+	transcript file -> TESTE/PreFilter_WC.fa
 	model -> ../models/TOXIN_ACHE
 	strand prediction -> both
-	number of threads -> 8
-2020-03-30 17:45:14 >>>> CDS prediction...
-2020-03-30 17:45:18 >>>> retrieving sequences...
+	number of threads -> 6
+2021-01-04 15:09:51 >>>> CDS prediction...
+2021-01-04 15:09:53 >>>> retrieving sequences...
 	number of transcripts -> 208
 	number of predictions -> 0
 		predictions at plus strand -> 0
 		predictions at minus strand -> 0
-2020-03-30 17:45:18 >>>> prediction finished!
-	CDS -> Venomancer_output/TOXIN_ACHE_out/ORF_sequences.fasta
-	CDS translated -> Venomancer_output/TOXIN_ACHE_out/PEP_sequences.fasta
-	3'UTR -> Venomancer_output/TOXIN_ACHE_out/3utr_sequences.fasta
-	5'UTR -> Venomancer_output/TOXIN_ACHE_out/5utr_sequences.fasta
-	GTF file -> Venomancer_output/TOXIN_ACHE_out/annotation.gtf
+2021-01-04 15:09:53 >>>> prediction finished!
+	CDS -> TESTE/TOXIN_ACHE_out/ORF_sequences.fasta
+	3'UTR -> TESTE/TOXIN_ACHE_out/3utr_sequences.fasta
+	5'UTR -> TESTE/TOXIN_ACHE_out/5utr_sequences.fasta
+	GTF file -> TESTE/TOXIN_ACHE_out/annotation.gtf
 
   _____           _  ___        
  /  __ \         | |/ _ \       
@@ -66,23 +91,22 @@ Adding sequences from FASTA; added 1377 sequences in 0.10224 seconds.
   \____/\___/ \__,_\_| |_/_| |_|
                           
         
-2020-03-30 17:45:18 >>>> starting CodAn (v1.0 September 2019)...
-	transcript file -> Venomancer_output/PreFilter_WC.fa
+2021-01-04 15:09:53 >>>> starting CodAn (v1.0 September 2019)...
+	transcript file -> TESTE/PreFilter_WC.fa
 	model -> ../models/TOXIN_HYAL
 	strand prediction -> both
-	number of threads -> 8
-2020-03-30 17:45:18 >>>> CDS prediction...
-2020-03-30 17:45:21 >>>> retrieving sequences...
+	number of threads -> 6
+2021-01-04 15:09:53 >>>> CDS prediction...
+2021-01-04 15:09:54 >>>> retrieving sequences...
 	number of transcripts -> 208
 	number of predictions -> 1
 		predictions at plus strand -> 1
 		predictions at minus strand -> 0
-2020-03-30 17:45:22 >>>> prediction finished!
-	CDS -> Venomancer_output/TOXIN_HYAL_out/ORF_sequences.fasta
-	CDS translated -> Venomancer_output/TOXIN_HYAL_out/PEP_sequences.fasta
-	3'UTR -> Venomancer_output/TOXIN_HYAL_out/3utr_sequences.fasta
-	5'UTR -> Venomancer_output/TOXIN_HYAL_out/5utr_sequences.fasta
-	GTF file -> Venomancer_output/TOXIN_HYAL_out/annotation.gtf
+2021-01-04 15:09:54 >>>> prediction finished!
+	CDS -> TESTE/TOXIN_HYAL_out/ORF_sequences.fasta
+	3'UTR -> TESTE/TOXIN_HYAL_out/3utr_sequences.fasta
+	5'UTR -> TESTE/TOXIN_HYAL_out/5utr_sequences.fasta
+	GTF file -> TESTE/TOXIN_HYAL_out/annotation.gtf
 
   _____           _  ___        
  /  __ \         | |/ _ \       
@@ -92,23 +116,22 @@ Adding sequences from FASTA; added 1377 sequences in 0.10224 seconds.
   \____/\___/ \__,_\_| |_/_| |_|
                           
         
-2020-03-30 17:45:22 >>>> starting CodAn (v1.0 September 2019)...
-	transcript file -> Venomancer_output/PreFilter_WC.fa
+2021-01-04 15:09:54 >>>> starting CodAn (v1.0 September 2019)...
+	transcript file -> TESTE/PreFilter_WC.fa
 	model -> ../models/TOXIN_MYO
 	strand prediction -> both
-	number of threads -> 8
-2020-03-30 17:45:22 >>>> CDS prediction...
-2020-03-30 17:45:25 >>>> retrieving sequences...
+	number of threads -> 6
+2021-01-04 15:09:54 >>>> CDS prediction...
+2021-01-04 15:09:55 >>>> retrieving sequences...
 	number of transcripts -> 208
 	number of predictions -> 0
 		predictions at plus strand -> 0
 		predictions at minus strand -> 0
-2020-03-30 17:45:25 >>>> prediction finished!
-	CDS -> Venomancer_output/TOXIN_MYO_out/ORF_sequences.fasta
-	CDS translated -> Venomancer_output/TOXIN_MYO_out/PEP_sequences.fasta
-	3'UTR -> Venomancer_output/TOXIN_MYO_out/3utr_sequences.fasta
-	5'UTR -> Venomancer_output/TOXIN_MYO_out/5utr_sequences.fasta
-	GTF file -> Venomancer_output/TOXIN_MYO_out/annotation.gtf
+2021-01-04 15:09:55 >>>> prediction finished!
+	CDS -> TESTE/TOXIN_MYO_out/ORF_sequences.fasta
+	3'UTR -> TESTE/TOXIN_MYO_out/3utr_sequences.fasta
+	5'UTR -> TESTE/TOXIN_MYO_out/5utr_sequences.fasta
+	GTF file -> TESTE/TOXIN_MYO_out/annotation.gtf
 
   _____           _  ___        
  /  __ \         | |/ _ \       
@@ -118,23 +141,22 @@ Adding sequences from FASTA; added 1377 sequences in 0.10224 seconds.
   \____/\___/ \__,_\_| |_/_| |_|
                           
         
-2020-03-30 17:45:26 >>>> starting CodAn (v1.0 September 2019)...
-	transcript file -> Venomancer_output/PreFilter_WC.fa
+2021-01-04 15:09:56 >>>> starting CodAn (v1.0 September 2019)...
+	transcript file -> TESTE/PreFilter_WC.fa
 	model -> ../models/TOXIN_PDE
 	strand prediction -> both
-	number of threads -> 8
-2020-03-30 17:45:26 >>>> CDS prediction...
-2020-03-30 17:45:29 >>>> retrieving sequences...
+	number of threads -> 6
+2021-01-04 15:09:56 >>>> CDS prediction...
+2021-01-04 15:09:57 >>>> retrieving sequences...
 	number of transcripts -> 208
 	number of predictions -> 2
 		predictions at plus strand -> 2
 		predictions at minus strand -> 0
-2020-03-30 17:45:29 >>>> prediction finished!
-	CDS -> Venomancer_output/TOXIN_PDE_out/ORF_sequences.fasta
-	CDS translated -> Venomancer_output/TOXIN_PDE_out/PEP_sequences.fasta
-	3'UTR -> Venomancer_output/TOXIN_PDE_out/3utr_sequences.fasta
-	5'UTR -> Venomancer_output/TOXIN_PDE_out/5utr_sequences.fasta
-	GTF file -> Venomancer_output/TOXIN_PDE_out/annotation.gtf
+2021-01-04 15:09:57 >>>> prediction finished!
+	CDS -> TESTE/TOXIN_PDE_out/ORF_sequences.fasta
+	3'UTR -> TESTE/TOXIN_PDE_out/3utr_sequences.fasta
+	5'UTR -> TESTE/TOXIN_PDE_out/5utr_sequences.fasta
+	GTF file -> TESTE/TOXIN_PDE_out/annotation.gtf
 
   _____           _  ___        
  /  __ \         | |/ _ \       
@@ -144,23 +166,22 @@ Adding sequences from FASTA; added 1377 sequences in 0.10224 seconds.
   \____/\___/ \__,_\_| |_/_| |_|
                           
         
-2020-03-30 17:45:29 >>>> starting CodAn (v1.0 September 2019)...
-	transcript file -> Venomancer_output/PreFilter_WC.fa
+2021-01-04 15:09:57 >>>> starting CodAn (v1.0 September 2019)...
+	transcript file -> TESTE/PreFilter_WC.fa
 	model -> ../models/TOXIN_VEGF
 	strand prediction -> both
-	number of threads -> 8
-2020-03-30 17:45:29 >>>> CDS prediction...
-2020-03-30 17:45:32 >>>> retrieving sequences...
+	number of threads -> 6
+2021-01-04 15:09:57 >>>> CDS prediction...
+2021-01-04 15:09:58 >>>> retrieving sequences...
 	number of transcripts -> 208
 	number of predictions -> 3
 		predictions at plus strand -> 3
 		predictions at minus strand -> 0
-2020-03-30 17:45:33 >>>> prediction finished!
-	CDS -> Venomancer_output/TOXIN_VEGF_out/ORF_sequences.fasta
-	CDS translated -> Venomancer_output/TOXIN_VEGF_out/PEP_sequences.fasta
-	3'UTR -> Venomancer_output/TOXIN_VEGF_out/3utr_sequences.fasta
-	5'UTR -> Venomancer_output/TOXIN_VEGF_out/5utr_sequences.fasta
-	GTF file -> Venomancer_output/TOXIN_VEGF_out/annotation.gtf
+2021-01-04 15:09:58 >>>> prediction finished!
+	CDS -> TESTE/TOXIN_VEGF_out/ORF_sequences.fasta
+	3'UTR -> TESTE/TOXIN_VEGF_out/3utr_sequences.fasta
+	5'UTR -> TESTE/TOXIN_VEGF_out/5utr_sequences.fasta
+	GTF file -> TESTE/TOXIN_VEGF_out/annotation.gtf
 
   _____           _  ___        
  /  __ \         | |/ _ \       
@@ -170,23 +191,22 @@ Adding sequences from FASTA; added 1377 sequences in 0.10224 seconds.
   \____/\___/ \__,_\_| |_/_| |_|
                           
         
-2020-03-30 17:45:33 >>>> starting CodAn (v1.0 September 2019)...
-	transcript file -> Venomancer_output/PreFilter_WC.fa
+2021-01-04 15:09:59 >>>> starting CodAn (v1.0 September 2019)...
+	transcript file -> TESTE/PreFilter_WC.fa
 	model -> ../models/TOXIN_3FTx
 	strand prediction -> both
-	number of threads -> 8
-2020-03-30 17:45:33 >>>> CDS prediction...
-2020-03-30 17:45:36 >>>> retrieving sequences...
+	number of threads -> 6
+2021-01-04 15:09:59 >>>> CDS prediction...
+2021-01-04 15:10:00 >>>> retrieving sequences...
 	number of transcripts -> 208
 	number of predictions -> 91
 		predictions at plus strand -> 81
 		predictions at minus strand -> 10
-2020-03-30 17:45:36 >>>> prediction finished!
-	CDS -> Venomancer_output/TOXIN_3FTx_out/ORF_sequences.fasta
-	CDS translated -> Venomancer_output/TOXIN_3FTx_out/PEP_sequences.fasta
-	3'UTR -> Venomancer_output/TOXIN_3FTx_out/3utr_sequences.fasta
-	5'UTR -> Venomancer_output/TOXIN_3FTx_out/5utr_sequences.fasta
-	GTF file -> Venomancer_output/TOXIN_3FTx_out/annotation.gtf
+2021-01-04 15:10:00 >>>> prediction finished!
+	CDS -> TESTE/TOXIN_3FTx_out/ORF_sequences.fasta
+	3'UTR -> TESTE/TOXIN_3FTx_out/3utr_sequences.fasta
+	5'UTR -> TESTE/TOXIN_3FTx_out/5utr_sequences.fasta
+	GTF file -> TESTE/TOXIN_3FTx_out/annotation.gtf
 
   _____           _  ___        
  /  __ \         | |/ _ \       
@@ -196,23 +216,22 @@ Adding sequences from FASTA; added 1377 sequences in 0.10224 seconds.
   \____/\___/ \__,_\_| |_/_| |_|
                           
         
-2020-03-30 17:45:36 >>>> starting CodAn (v1.0 September 2019)...
-	transcript file -> Venomancer_output/PreFilter_WC.fa
+2021-01-04 15:10:00 >>>> starting CodAn (v1.0 September 2019)...
+	transcript file -> TESTE/PreFilter_WC.fa
 	model -> ../models/TOXIN_CTL
 	strand prediction -> both
-	number of threads -> 8
-2020-03-30 17:45:36 >>>> CDS prediction...
-2020-03-30 17:45:40 >>>> retrieving sequences...
+	number of threads -> 6
+2021-01-04 15:10:00 >>>> CDS prediction...
+2021-01-04 15:10:01 >>>> retrieving sequences...
 	number of transcripts -> 208
 	number of predictions -> 2
 		predictions at plus strand -> 2
 		predictions at minus strand -> 0
-2020-03-30 17:45:40 >>>> prediction finished!
-	CDS -> Venomancer_output/TOXIN_CTL_out/ORF_sequences.fasta
-	CDS translated -> Venomancer_output/TOXIN_CTL_out/PEP_sequences.fasta
-	3'UTR -> Venomancer_output/TOXIN_CTL_out/3utr_sequences.fasta
-	5'UTR -> Venomancer_output/TOXIN_CTL_out/5utr_sequences.fasta
-	GTF file -> Venomancer_output/TOXIN_CTL_out/annotation.gtf
+2021-01-04 15:10:01 >>>> prediction finished!
+	CDS -> TESTE/TOXIN_CTL_out/ORF_sequences.fasta
+	3'UTR -> TESTE/TOXIN_CTL_out/3utr_sequences.fasta
+	5'UTR -> TESTE/TOXIN_CTL_out/5utr_sequences.fasta
+	GTF file -> TESTE/TOXIN_CTL_out/annotation.gtf
 
   _____           _  ___        
  /  __ \         | |/ _ \       
@@ -222,23 +241,22 @@ Adding sequences from FASTA; added 1377 sequences in 0.10224 seconds.
   \____/\___/ \__,_\_| |_/_| |_|
                           
         
-2020-03-30 17:45:40 >>>> starting CodAn (v1.0 September 2019)...
-	transcript file -> Venomancer_output/PreFilter_WC.fa
+2021-01-04 15:10:01 >>>> starting CodAn (v1.0 September 2019)...
+	transcript file -> TESTE/PreFilter_WC.fa
 	model -> ../models/TOXIN_KUN
 	strand prediction -> both
-	number of threads -> 8
-2020-03-30 17:45:40 >>>> CDS prediction...
-2020-03-30 17:45:43 >>>> retrieving sequences...
+	number of threads -> 6
+2021-01-04 15:10:01 >>>> CDS prediction...
+2021-01-04 15:10:03 >>>> retrieving sequences...
 	number of transcripts -> 208
 	number of predictions -> 2
 		predictions at plus strand -> 2
 		predictions at minus strand -> 0
-2020-03-30 17:45:43 >>>> prediction finished!
-	CDS -> Venomancer_output/TOXIN_KUN_out/ORF_sequences.fasta
-	CDS translated -> Venomancer_output/TOXIN_KUN_out/PEP_sequences.fasta
-	3'UTR -> Venomancer_output/TOXIN_KUN_out/3utr_sequences.fasta
-	5'UTR -> Venomancer_output/TOXIN_KUN_out/5utr_sequences.fasta
-	GTF file -> Venomancer_output/TOXIN_KUN_out/annotation.gtf
+2021-01-04 15:10:03 >>>> prediction finished!
+	CDS -> TESTE/TOXIN_KUN_out/ORF_sequences.fasta
+	3'UTR -> TESTE/TOXIN_KUN_out/3utr_sequences.fasta
+	5'UTR -> TESTE/TOXIN_KUN_out/5utr_sequences.fasta
+	GTF file -> TESTE/TOXIN_KUN_out/annotation.gtf
 
   _____           _  ___        
  /  __ \         | |/ _ \       
@@ -248,23 +266,22 @@ Adding sequences from FASTA; added 1377 sequences in 0.10224 seconds.
   \____/\___/ \__,_\_| |_/_| |_|
                           
         
-2020-03-30 17:45:43 >>>> starting CodAn (v1.0 September 2019)...
-	transcript file -> Venomancer_output/PreFilter_WC.fa
+2021-01-04 15:10:03 >>>> starting CodAn (v1.0 September 2019)...
+	transcript file -> TESTE/PreFilter_WC.fa
 	model -> ../models/TOXIN_NUC
 	strand prediction -> both
-	number of threads -> 8
-2020-03-30 17:45:43 >>>> CDS prediction...
-2020-03-30 17:45:47 >>>> retrieving sequences...
+	number of threads -> 6
+2021-01-04 15:10:03 >>>> CDS prediction...
+2021-01-04 15:10:04 >>>> retrieving sequences...
 	number of transcripts -> 208
 	number of predictions -> 0
 		predictions at plus strand -> 0
 		predictions at minus strand -> 0
-2020-03-30 17:45:47 >>>> prediction finished!
-	CDS -> Venomancer_output/TOXIN_NUC_out/ORF_sequences.fasta
-	CDS translated -> Venomancer_output/TOXIN_NUC_out/PEP_sequences.fasta
-	3'UTR -> Venomancer_output/TOXIN_NUC_out/3utr_sequences.fasta
-	5'UTR -> Venomancer_output/TOXIN_NUC_out/5utr_sequences.fasta
-	GTF file -> Venomancer_output/TOXIN_NUC_out/annotation.gtf
+2021-01-04 15:10:04 >>>> prediction finished!
+	CDS -> TESTE/TOXIN_NUC_out/ORF_sequences.fasta
+	3'UTR -> TESTE/TOXIN_NUC_out/3utr_sequences.fasta
+	5'UTR -> TESTE/TOXIN_NUC_out/5utr_sequences.fasta
+	GTF file -> TESTE/TOXIN_NUC_out/annotation.gtf
 
   _____           _  ___        
  /  __ \         | |/ _ \       
@@ -274,77 +291,49 @@ Adding sequences from FASTA; added 1377 sequences in 0.10224 seconds.
   \____/\___/ \__,_\_| |_/_| |_|
                           
         
-2020-03-30 17:45:47 >>>> starting CodAn (v1.0 September 2019)...
-	transcript file -> Venomancer_output/PreFilter_WC.fa
+2021-01-04 15:10:04 >>>> starting CodAn (v1.0 September 2019)...
+	transcript file -> TESTE/PreFilter_WC.fa
 	model -> ../models/TOXIN_PLA2
 	strand prediction -> both
-	number of threads -> 8
-2020-03-30 17:45:47 >>>> CDS prediction...
-2020-03-30 17:45:50 >>>> retrieving sequences...
+	number of threads -> 6
+2021-01-04 15:10:04 >>>> CDS prediction...
+2021-01-04 15:10:06 >>>> retrieving sequences...
 	number of transcripts -> 208
 	number of predictions -> 0
 		predictions at plus strand -> 0
 		predictions at minus strand -> 0
-2020-03-30 17:45:50 >>>> prediction finished!
-	CDS -> Venomancer_output/TOXIN_PLA2_out/ORF_sequences.fasta
-	CDS translated -> Venomancer_output/TOXIN_PLA2_out/PEP_sequences.fasta
-	3'UTR -> Venomancer_output/TOXIN_PLA2_out/3utr_sequences.fasta
-	5'UTR -> Venomancer_output/TOXIN_PLA2_out/5utr_sequences.fasta
-	GTF file -> Venomancer_output/TOXIN_PLA2_out/annotation.gtf
+2021-01-04 15:10:06 >>>> prediction finished!
+	CDS -> TESTE/TOXIN_PLA2_out/ORF_sequences.fasta
+	3'UTR -> TESTE/TOXIN_PLA2_out/3utr_sequences.fasta
+	5'UTR -> TESTE/TOXIN_PLA2_out/5utr_sequences.fasta
+	GTF file -> TESTE/TOXIN_PLA2_out/annotation.gtf
+
+2021-01-04 15:10:06 >>>> filtering toxin predictions...
 Warning: [blastx] Query is Empty!
 Warning: [blastx] Query is Empty!
 Warning: [blastx] Query is Empty!
 Warning: [blastx] Query is Empty!
-Venomancer/bin/BlastNamer.py:66: DeprecationWarning: 'U' mode is deprecated
+/home/nachtigall/Desktop/posdoc_butantan/Venomancer/bin//BlastNamer.py:66: DeprecationWarning: 'U' mode is deprecated
   file = open(folder+"signalp.txt", "rU")
 Warning: [blastp] Examining 5 or more matches is recommended
 
+2021-01-04 15:10:42 >>>> removing redundancy from the toxin predictions with 100% identity...
 
+2021-01-04 15:10:42 >>>> filtering toxin predictions with no signalp...
 
- ██▒   █▓▓█████  ███▄    █  ▒█████   ███▄ ▄███▓ ▄▄▄       ███▄    █  ▄████▄  ▓█████  ██▀███
-▓██░   █▒▓█   ▀  ██ ▀█   █ ▒██▒  ██▒▓██▒▀█▀ ██▒▒████▄     ██ ▀█   █ ▒██▀ ▀█  ▓█   ▀ ▓██ ▒ ██▒
- ▓██  █▒░▒███   ▓██  ▀█ ██▒▒██░  ██▒▓██    ▓██░▒██  ▀█▄  ▓██  ▀█ ██▒▒▓█    ▄ ▒███   ▓██ ░▄█ ▒
-  ▒██ █░░▒▓█  ▄ ▓██▒  ▐▌██▒▒██   ██░▒██    ▒██ ░██▄▄▄▄██ ▓██▒  ▐▌██▒▒▓▓▄ ▄██▒▒▓█  ▄ ▒██▀▀█▄
-   ▒▀█░  ░▒████▒▒██░   ▓██░░ ████▓▒░▒██▒   ░██▒ ▓█   ▓██▒▒██░   ▓██░▒ ▓███▀ ░░▒████▒░██▓ ▒██▒
-   ░ ▐░  ░░ ▒░ ░░ ▒░   ▒ ▒ ░ ▒░▒░▒░ ░ ▒░   ░  ░ ▒▒   ▓▒█░░ ▒░   ▒ ▒ ░ ░▒ ▒  ░░░ ▒░ ░░ ▒▓ ░▒▓░
-   ░ ░░   ░ ░  ░░ ░░   ░ ▒░  ░ ▒ ▒░ ░  ░      ░  ▒   ▒▒ ░░ ░░   ░ ▒░  ░  ▒    ░ ░  ░  ░▒ ░ ▒░
-     ░░     ░      ░   ░ ░ ░ ░ ░ ▒  ░      ░     ░   ▒      ░   ░ ░ ░           ░     ░░   ░
-      ░     ░  ░         ░     ░ ░         ░         ░  ░         ░ ░ ░         ░  ░   ░
-     ░                                                              ░
-
-
-        
-
-2020-03-30 17:40:02 >>>> starting Venomancer (v1.0 December 2019)...
-	transcripts file -> Mfulv.fasta
-	Output files and folders -> Venomancer_output/
-	Models folder -> ../models/
-	signalP filter ->  True
-	Number of threads -> 8
-
-2020-03-30 17:40:02 >>>> performing pre-filter step...
-
-2020-03-30 17:45:08 >>>> performing toxin prediction...
-
-2020-03-30 17:45:50 >>>> filtering toxin predictions...
-
-2020-03-30 17:46:49 >>>> removing redundancy from the toxin predictions with 100% identity...
-
-2020-03-30 17:46:49 >>>> filtering toxin predictions with no signalp...
-
-2020-03-30 17:46:54 >>>> Venomancer finished!
-	Check the final results at Venomancer_output/
-		venomancer_Toxins_cds.fasta
-		venomancer_Toxins_pep.fasta
-		venomancer_Toxins_annotation.gtf
-		venomancer_Toxins_contigs.fasta
-		venomancer_PutativeToxins_cds.fasta
-		venomancer_PutativeToxins_contigs.fasta
-		venomancer_NonToxins_contigs.fasta
-		venomancer_Toxins_cds_SPfiltered.fasta
-		venomancer_Toxins_pep_SPfiltered.fasta
-		venomancer_Toxins_contigs_SPfiltered.fasta
-		venomancer_Toxins_cds_SPfiltered_RedundancyFiltered.fasta
+2021-01-04 15:10:45 >>>> ToxCodAn finished!
+	Check the final results at TESTE/
+		toxcodan_Toxins_cds.fasta
+		toxcodan_Toxins_pep.fasta
+		toxcodan_Toxins_annotation.gtf
+		toxcodan_Toxins_contigs.fasta
+		toxcodan_PutativeToxins_cds.fasta
+		toxcodan_PutativeToxins_contigs.fasta
+		toxcodan_NonToxins_contigs.fasta
+		toxcodan_Toxins_cds_SPfiltered.fasta
+		toxcodan_Toxins_pep_SPfiltered.fasta
+		toxcodan_Toxins_contigs_SPfiltered.fasta
+		toxcodan_Toxins_cds_SPfiltered_RedundancyFiltered.fasta
 
         Description of the output files:
             cds -> coding sequence of the predicted toxins
@@ -355,3 +344,4 @@ Warning: [blastp] Examining 5 or more matches is recommended
             NonToxins -> sequences with very low probability of being toxins
             RedundancyFiltered -> CDSs with 100% identity filtered
             SPfiltered -> signalP filtered sequences (optional step)
+
