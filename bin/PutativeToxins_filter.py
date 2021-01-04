@@ -40,12 +40,14 @@ def _GetOutput_(blast, fasta, folder, prefix):
     BLAST = _ParseBlast_(blast)
     FASTA = _ParseFasta_(fasta)
 
+    ADDED = []
+
     PTcds = open(folder+prefix+"_PutativeToxins_cds_SPfiltered.fasta","w")
     PTcontigs = open(folder+prefix+"_PutativeToxins_contigs_SPfiltered.fasta","w")
     PTpep = open(folder+prefix+"_PutativeToxins_pep_SPfiltered.fasta","w")
     for k in BLAST.keys():
         for j in FASTA.keys():
-            if k in j:
+            if k in j and k not in ADDED:
                 j1 = j.split("||_")
                 j2 = j1[-1].split("_")
                 st = int(j2[0])
@@ -64,6 +66,7 @@ def _GetOutput_(blast, fasta, folder, prefix):
                 CodingDna = Seq(CDS, generic_dna)
                 pep = str(CodingDna.translate(table=1))
                 PTpep.write(">"+k+"||"+hit+"\n"+pep+"\n")
+                ADDED.append(k)
     PTcds.close()
     PTcontigs.close()
     PTpep.close()
