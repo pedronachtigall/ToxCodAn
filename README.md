@@ -1,12 +1,12 @@
-![venomancer_logo](/venomancer_logo.png)
+![toxcodan_logo](/toxcodan_logo.png)
 
-Venomancer
-==========
-<!---[![Latest GitHub release](https://img.shields.io/github/release/pedronachtigall/Venomancer.svg)](https://github.com/pedronachtigall/Venomancer/releases/latest) -->
+ToxCodAn
+========
+<!---[![Latest GitHub release](https://img.shields.io/github/release/pedronachtigall/ToxCodAn.svg)](https://github.com/pedronachtigall/ToxCodAn/releases/latest) -->
 <!---[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3403273.svg)](https://doi.org/10.5281/zenodo.3403273) -->
 <!---[![Published in Genome Biology](https://img.shields.io/badge/published%20in-Genome%20Biology-blue.svg)](https://doi.org/10.1101/gr.214270.116) -->
 
-**Venomancer** is a computational tool designed to detect and annotate toxin genes in transcriptome assembly.
+**ToxCodAn** is a computational tool designed to detect and annotate toxin genes in transcriptome assembly.
 
 Getting Started
 =================
@@ -16,13 +16,13 @@ Getting Started
 Download the master folder and follow the steps below:
 
 ```
-unzip Venomancer-master.zip
-export PATH=$PATH:path/to/Venomancer-master/bin/
+unzip ToxCodAn-master.zip
+export PATH=$PATH:path/to/ToxCodAn-master/bin/
 ```
-OR git clone the Venomancer respository and add the bin folder into your PATH:
+OR git clone the ToxCodAn respository and add the bin folder into your PATH:
 ```
-git clone https://github.com/pedronachtigall/Venomancer.git
-export PATH=$PATH:path/to/Venomancer/bin/
+git clone https://github.com/pedronachtigall/ToxCodAn.git
+export PATH=$PATH:path/to/ToxCodAn/bin/
 ```
 
 # Requirements
@@ -37,45 +37,45 @@ export PATH=$PATH:path/to/Venomancer/bin/
 
 Ensure that all requirements are working properly.
 
-:warning: If the user wants to install Venomancer and all dependencies using [Conda environment](https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html), follow the steps below:
+:warning: If the user wants to install ToxCodAn and all dependencies using [Conda environment](https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html), follow the steps below:
 - Create the environment:
-    - ```conda create -n venomancer_env python=3.7 biopython perl perl-bioperl perl-mce blast```
-- Git clone the Venomancer repository and add to your PATH:
-    - ```git clone https://github.com/pedronachtigall/Venomancer.git```
-    - ```export PATH=$PATH:path/to/Venomancer/bin/```
+    - ```conda create -n toxcodan_env python=3.7 biopython perl perl-bioperl perl-mce blast```
+- Git clone the ToxCodAn repository and add to your PATH:
+    - ```git clone https://github.com/pedronachtigall/ToxCodAn.git```
+    - ```export PATH=$PATH:path/to/ToxCodAn/bin/```
 - Git clone the CodAn repository and add to your PATH:
     - ```git clone https://github.com/pedronachtigall/CodAn.git```
     - ```export PATH=$PATH:path/to/CodAn/bin/```
 - Download the SignalP-4.1, decompress and add it to your PATH:
     - ```tar -xzf signalp-4.1g.Linux.tar.gz```
     - ```export PATH=$PATH:path/to/signalp-4.1/```
-- Then, run Venomancer as described in the "Usage" section.
-- To activate the environment to run Venomancer just use the command: ```conda activate venomancer_env```
+- Then, run ToxCodAn as described in the "Usage" section.
+- To activate the environment to run ToxCodAn just use the command: ```conda activate toxcodan_env```
 - To deactivate the environment just use the command: ```conda deactivate```
 
 # Models
 
-The model folder contains specific gHMM models and the toxinDB used in the Venomancer pipeline.
+The model folder contains specific gHMM models and the toxinDB used in the ToxCodAn pipeline.
 
-Download the [models.zip](https://github.com/pedronachtigall/Venomancer/blob/master/models.zip) file, uncompress (```unzip models.zip```) and specify it to the ```-m``` option of Venomancer command line (```-m path/to/models/```).
+Download the [models.zip](https://github.com/pedronachtigall/ToxCodAn/blob/master/models.zip) file, uncompress (```unzip models.zip```) and specify it to the ```-m``` option of ToxCodAn command line (```-m path/to/models/```).
 
 # Usage
 
 ```
-Usage: venomancer.py [options]
+Usage: toxcodan.py [options]
 
 Options:
   -h, --help            show this help message and exit
   -s string, --sample=string
                         Optional - sample ID to be used in the output files
-                        [default=venomancer]
+                        [default=toxcodan]
   -t fasta, --transcripts=fasta
                         Mandatory - transcripts in FASTA format,
                         /path/to/transcripts.fasta
   -o folder, --output=folder
                         Optional - output folder, /path/to/output_folder; if
                         not defined, the output folder will be set in the
-                        current directory [Venomancer_output]
+                        current directory [ToxCodAn_output]
   -m path, --model=path
                         Mandatory - path to model folder, /path/to/models
   -p boolean value, --signalp=boolean value
@@ -97,19 +97,19 @@ Options:
 
 Basic usage:
 ```
-venomancer.py -t transcripts.fa -m path/to/models
+toxcodan.py -t transcripts.fa -m path/to/models
 ```
 
-Check our [tutorial](https://github.com/pedronachtigall/Venomancer/tree/master/tutorial) to learn how to use Venomancer.
+Check our [tutorial](https://github.com/pedronachtigall/ToxCodAn/tree/master/tutorial) to learn how to use ToxCodAn.
 
 # Inputs
-Venomancer has the following inputs as mandatory:
+ToxCodAn has the following inputs as mandatory:
  - Transcripts in [fasta format](https://en.wikipedia.org/wiki/FASTA_format) through the ```-t``` option.
- - The uncompressed [models](https://github.com/pedronachtigall/Venomancer/blob/master/models.zip) folder through the ```-m``` option
+ - The uncompressed [models](https://github.com/pedronachtigall/ToxCodAn/blob/master/models.zip) folder through the ```-m``` option
 
 # Outputs
 
-Venomancer outputs the following files:
+ToxCodAn outputs the following files:
 ```
 SampleID_Toxins_cds.fasta
 SampleID_Toxins_pep.fasta
@@ -157,17 +157,17 @@ The user can take advantages of a simple script designed to annotate Non Toxin t
 - This script takes advantage of MultiThreading by using the option `-c`.
 - Usage: ```NonToxins_Annotator.py -t predicted_CDS.fasta -d path/to/db1,...,path/to/dbN -b path/to/busco/odb -p path/to/pfam.hmm -c N```
 
-:warning: Alternatively, if the user wants to directly perform the NonToxins annotation within the Venomancer pipeline just follow the steps below:
-- Enter in the ["non_toxin_models"](https://github.com/pedronachtigall/Venomancer/tree/master/non_toxin_models)
-    - ```cd path/to/venomancer/non_toxin_models/```
+:warning: Alternatively, if the user wants to directly perform the NonToxins annotation within the ToxCodAn pipeline just follow the steps below:
+- Enter in the ["non_toxin_models"](https://github.com/pedronachtigall/ToxCodAn/tree/master/non_toxin_models)
+    - ```cd path/to/toxcodan/non_toxin_models/```
 - Uncompress the proteinDB (```tar xjf pepDB.tar.bz2```) and the CodAn model for Vertebrates (```gzip -d VERT_full.zip```)
-- Then, use the option ```-n``` in the venomancer command line to automatically perform the NonToxin annotation:
-    - ```venomancer.py -s sampleID -t assembly.fasta -o out_venomancer -m /path/to/models -c 4 -n path/to/non_toxin_models/```
+- Then, use the option ```-n``` in the ToxCodAn command line to automatically perform the NonToxin annotation:
+    - ```toxcodan.py -s sampleID -t assembly.fasta -o out_toxcodan -m /path/to/models -c 4 -n path/to/non_toxin_models/```
 
 Reference
 =========
 
-If you use or discuss **Venomancer**, please cite:
+If you use or discuss **ToxCodAn**, please cite:
 
 Nachtigall et al., under review
 
@@ -185,14 +185,14 @@ To report bugs, to ask for help and to give any feedback, please contact **Pedro
 Frequently Asked Questions (FAQ)
 ================================
 
-**[Q1]** What Operation System (OS) do I need to use Venomancer?
-  - We tested Venomancer in Linux Ubuntu 16 and 18, and macOS Mojave and Catalina. However, we believe that Venomancer should work on any UNIX OS able to have all dependencies of Venomancer.
+**[Q1]** What Operation System (OS) do I need to use ToxCodAn?
+  - We tested ToxCodAn in Linux Ubuntu 16 and 18, and macOS Mojave and Catalina. However, we believe that ToxCodAn should work on any UNIX OS able to have all dependencies of ToxCodAn installed.
  
-**[Q2]** How long will take to Venomancer finish the analysis?
-  - We tested Venomancer using a personal computer (6-Core i7 with 16Gb memory) and 6 threads (```-c 6```), it took only 55 minutes to finish the analysis by using a de novo dataset with 146,077 sequences. If the user has more threads available for use, the running time will decrease.
+**[Q2]** How long will take to ToxCodAn finish the analysis?
+  - We tested ToxCodAn using a personal computer (6-Core i7 with 16Gb memory) and 6 threads (```-c 6```), it took only 55 minutes to finish the analysis by using a *de novo* dataset with 146,077 sequences. If the user has more threads available for use, the running time will decrease.
 
-**[Q3]** Is Venomancer only available for snake species? :snake:
+**[Q3]** Is ToxCodAn only available for snake species? :snake:
   - Unfortunately, we only acquired sufficient trainning data for snake toxins. But we are working to get more training data to other venomous taxa and make them available soon. Stay tune!
 
-**[Q4]** When was the Venomancer's Databases last updated?
+**[Q4]** When was the ToxCodAn's Databases last updated?
   - Our models and databases used for annotations were last updated in September 2020.
