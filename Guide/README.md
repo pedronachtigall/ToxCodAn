@@ -1,11 +1,11 @@
-![](./figures/venomancer_logo.png)
+![](./figures/toxcodan_logo.png)
 
 # The Guide to Venom Gland Transcriptomics
 ### Pedro G. Nachtigall, Rhett M. Rautsaw, Schyler Ellsworth, Andrew J. Mason, Darin R. Rokyta, Christopher L. Parkinson, Inácio L.M. Junqueira-de-Azevedo
 
 # Introduction
 
-The Guide to Venom Gland Transcriptomics is part of [**Venomancer**](https://github.com/pedronachtigall/Venomancer) and designed to walk you through our recommended bioinformatic pipeline. If you are new to bioinformatics, don’t worry! There are some resources and information provided at the beginning of the document to get you started. The topics covered in the Guide include:
+The Guide to Venom Gland Transcriptomics is part of [**ToxCodAn**](https://github.com/pedronachtigall/ToxCodAn) and designed to walk you through our recommended bioinformatic pipeline. If you are new to bioinformatics, don’t worry! There are some resources and information provided at the beginning of the document to get you started. The topics covered in the Guide include:
 
 - [Basic Bioinformatics](#basic-bioinformatics)
 	- [Training Resources](#training-resources)
@@ -243,8 +243,8 @@ conda deactivate # Deactivate your environment to exit
 # Create a Trinity environment
 conda create -n trinity_env trinity parallel
 
-# Create a Venomancer environment
-conda create -n venomancer_env python=3.7 biopython perl perl-bioperl perl-mce blast hmmer parallel
+# Create a ToxCodAn environment
+conda create -n toxcodan_env python=3.7 biopython perl perl-bioperl perl-mce blast hmmer parallel
 
 # Create a ChimeraKiller environment
 conda create -n chimerakiller_env python=3.6 biopython bwa samtools bedtools picard pandas matplotlib scipy pysam gatk4 pathos parallel
@@ -256,12 +256,12 @@ But how do you know when to create a new environment vs. just add to a pre-exis
 
 I recommend to always try Googling "[`conda install {software}`](https://lmgtfy.app/?q=conda+install+trim+galore)" first; however, sometimes it is not possible to install things via Anaconda and you will have to manually download, install, and add the install location to your `$PATH`. I recommend creating a bin folder in an easily accessible location and installing all softwares in this folder. For example, I set up my bin folder in `~/Dropbox/bin` so that it can be accessed by any of my computers with Dropbox connected. You just need to make sure the `$PATH` is located in you unix profile on that computer.
 
-Below, we download [Venomancer](https://github.com/pedronachtigall/Venomancer), [CodAn](https://github.com/pedronachtigall/CodAn.git), and [signalp](https://services.healthtech.dtu.dk/software.php) and add them to our `$PATH`. I also recommend running the tutorial for each software to ensure it is installed properly.
+Below, we download [ToxCodAn](https://github.com/pedronachtigall/ToxCodAn), [CodAn](https://github.com/pedronachtigall/CodAn.git), and [signalp](https://services.healthtech.dtu.dk/software.php) and add them to our `$PATH`. I also recommend running the tutorial for each software to ensure it is installed properly.
 
 ``` bash
-# Git clone the Venomancer repository and add to your PATH:
-git clone https://github.com/pedronachtigall/Venomancer.git
-echo "export PATH=\$PATH:$PWD/Venomancer/bin" >> ~/.bash_profile
+# Git clone the ToxCodAn repository and add to your PATH:
+git clone https://github.com/pedronachtigall/ToxCodAn.git
+echo "export PATH=\$PATH:$PWD/ToxCodAn/bin" >> ~/.bash_profile
 
 # Git clone the CodAn repository and add to your PATH:
 git clone https://github.com/pedronachtigall/CodAn.git
@@ -456,20 +456,20 @@ parallel -a list.txt -j 2 --verbose "echo {}
 
 ## Transcriptome Annotation
 
-### Venomancer
+### ToxCodAn
 <p align="center">
-<img src="./figures/venomancer_pipeline.png" width=75%/>
+<img src="./figures/toxcodan_pipeline.png" width=75%/>
 </p>
 
-[**Venomancer**](https://github.com/pedronachtigall/Venomancer) was designed to identify and annotate toxins from a *de novo* venom gland transcriptome assembly. This software uses [**BLAST**](https://blast.ncbi.nlm.nih.gov/Blast.cgi) and trained generalized Hidden Markov Models (gHMM) to identify toxins in our assembly and annotated them. We will then use the resulting files `{}_Toxins_cds_Redundancyfiltered.fasta` and `{}_PutativeToxins_cds_SPfiltered.fasta`, combining them together and appending “TOXIN” to the beginning of the fasta names.
+[**ToxCodAn**](https://github.com/pedronachtigall/ToxCodAn) was designed to identify and annotate toxins from a *de novo* venom gland transcriptome assembly. This software uses [**BLAST**](https://blast.ncbi.nlm.nih.gov/Blast.cgi) and trained generalized Hidden Markov Models (gHMM) to identify toxins in our assembly and annotated them. We will then use the resulting files `{}_Toxins_cds_Redundancyfiltered.fasta` and `{}_PutativeToxins_cds_SPfiltered.fasta`, combining them together and appending “TOXIN” to the beginning of the fasta names.
 
 ``` bash
-conda activate venomancer_env
+conda activate toxcodan_env
 parallel -a list.txt -j 2 --verbose "echo {}
 	cd {}
-	mkdir 08_venomancer 
-	venomancer.py -s {} -t 07_assembly/{}_assembly_reduced.fasta -o 08_venomancer -m /path/to/models -c 4
-	cd 08_venomancer
+	mkdir 08_toxcodan 
+	toxcodan.py -s {} -t 07_assembly/{}_assembly_reduced.fasta -o 08_toxcodan -m /path/to/models -c 4
+	cd 08_toxcodan
 	cat {}_Toxins_cds_Redundancyfiltered.fasta {}_PutativeToxins_cds_SPfiltered.fasta > {}_Toxins.fasta
 	perl -pi -e 's/>/>TOXIN_/g' {}_Toxins.fasta"
 ```
@@ -478,7 +478,7 @@ parallel -a list.txt -j 2 --verbose "echo {}
 
 ### Nontoxin Annotation
 
-For nontoxin annotation, we will take the Nontoxin output from [Venomancer](https://github.com/pedronachtigall/Venomancer) (`{}_NonToxins_contigs.fasta`) and use [CodAn](https://github.com/pedronachtigall/CodAn) to predict to predict the coding sequence (CDS) regions, using the [VERTEBRATE model (VERT_full)](https://github.com/pedronachtigall/CodAn/blob/master/models). The CodAn-predicted CDS regions will be used as input for Venomancer’s `NonToxinAnnotation.py` which uses [**BLAST**](https://blast.ncbi.nlm.nih.gov/Blast.cgi), [**BUSCO**](https://busco.ezlab.org/) (optional), and [**Pfam**](http://pfam.xfam.org/) (optional) to annotate the predicted CDSs. 
+For nontoxin annotation, we will take the Nontoxin output from [ToxCodAn](https://github.com/pedronachtigall/ToxCodAn) (`{}_NonToxins_contigs.fasta`) and use [CodAn](https://github.com/pedronachtigall/CodAn) to predict to predict the coding sequence (CDS) regions, using the [VERTEBRATE model (VERT_full)](https://github.com/pedronachtigall/CodAn/blob/master/models). The CodAn-predicted CDS regions will be used as input for ToxCodAn’s `NonToxinAnnotation.py` which uses [**BLAST**](https://blast.ncbi.nlm.nih.gov/Blast.cgi), [**BUSCO**](https://busco.ezlab.org/) (optional), and [**Pfam**](http://pfam.xfam.org/) (optional) to annotate the predicted CDSs. 
 
 **NOTE:** This step keeps the uncharacterized proteins for potential novel toxin discovery.
 
@@ -494,10 +494,10 @@ For nontoxin annotation, we will take the Nontoxin output from [Venomancer](http
 parallel -a list.txt -j 2 --verbose "echo {}
 	cd {}
 	mkdir 09_nontoxins
-	mv 08_venomancer/{}.venomancer_NonToxins_contigs.fasta 09_nontoxins/
+	mv 08_toxcodan/{}.toxcodan_NonToxins_contigs.fasta 09_nontoxins/
 	cd 09_nontoxins
 	unzip path/to/CodAn/models/VERT_full.zip
-	codan.py -t {}.venomancer_NonToxins_contigs.fasta -m VERT_full/ -o {}_NonToxins_codan -c 4
+	codan.py -t {}.toxcodan_NonToxins_contigs.fasta -m VERT_full/ -o {}_NonToxins_codan -c 4
 	mv {}_NonToxins_codan/ORF_sequences.fasta {}_NonToxins_CDS.fasta
 	NonToxinsAnnotation.py -t {}_NonToxins_CDS.fasta -d path/to/swissprot -b path/to/BUSCO/odb -p path/to/Pfam-A.hmm -c 4
 	mv Annotation_output/annotated.fa {}_NonToxins_annotated.fasta"
@@ -510,24 +510,24 @@ With both toxins and nontoxins annotated, we can combine them back together.
 parallel -a list.txt -j 2 --verbose "echo {}
 	cd {}
 	mkdir 10_CompleteAnnotation
-	cat 08_venomancer/{}_Toxins.fasta 09_nontoxins/{}_NonToxins_annotated.fasta > 10_CompleteAnnotation/{}_annotated.fasta"
+	cat 08_toxcodan/{}_Toxins.fasta 09_nontoxins/{}_NonToxins_annotated.fasta > 10_CompleteAnnotation/{}_annotated.fasta"
 ```
 
->### Venomancer-Nontoxin Annotation Integration
+>### ToxCodAn-Nontoxin Annotation Integration
 >
->Nontoxin annotation has been integrated directly into Venomancer. You do not need to do this step if you've already completed Nontoxin annotation, but if the user wants to directly perform the nontoxin annotation within Venomancer just follow the steps below:
+>Nontoxin annotation has been integrated directly into ToxCodAn. You do not need to do this step if you've already completed Nontoxin annotation, but if the user wants to directly perform the nontoxin annotation within ToxCodAn just follow the steps below:
 >```
->cd path/to/Venomancer/non_toxin_models/
+>cd path/to/ToxCodAn/non_toxin_models/
 >tar -xjf pepDB.tar.bz2 
 >gunzip VERT_full.zip
->venomancer.py -s sampleID -t assembly.fasta -o out_venomancer -m /path/to/models -c 4 -n path/to/non_toxin_models/
+>toxcodan.py -s sampleID -t assembly.fasta -o out_toxcodan -m /path/to/models -c 4 -n path/to/non_toxin_models/
 >```
 
 
 
 ### Manual Annotation
 
-If you don’t think Venomancer is doing the trick or you want to be incredibly thorough and make sure you got everything, feel free to expand this section to learn how we manually annotate venom gland transcriptomes. If you are comfortable with Venomancer performance, you can skip down to the section on [Removing Chimeras](#removing-chimeras).
+If you don’t think ToxCodAn is doing the trick or you want to be incredibly thorough and make sure you got everything, feel free to expand this section to learn how we manually annotate venom gland transcriptomes. If you are comfortable with ToxCodAn performance, you can skip down to the section on [Removing Chimeras](#removing-chimeras).
 
 <details>
 <summary>Expand Manual Annotation Section</summary>
@@ -581,7 +581,7 @@ Then, drag your unannotated assembly contigs `07_assembly/{}_assembly_reduced.fa
 
 If assembly was perfect, then each contig would represent a complete transcript with a start and stop codon. Unfortunately, this is not the case. The transcripts are actually “hidden” within the contigs. Therefore, we need to identify the correct start/stop codons inside our contigs. 
 
-There can be multiple start/stops in each contig and these are known as the “Open Reading Frames” or ORFs. [Venomancer](#Venomancer) attempts to automate the identification of the correct ORF or coding sequence (CDS), but now you get to experience it for yourself and gain an understanding for why automating CDS identification is so challenging.
+There can be multiple start/stops in each contig and these are known as the “Open Reading Frames” or ORFs. [ToxCodAn](#ToxCodAn) attempts to automate the identification of the correct ORF or coding sequence (CDS), but now you get to experience it for yourself and gain an understanding for why automating CDS identification is so challenging.
 
 Select all your contigs and go to the `Annotate & Predict` menu and and choose `Find ORFs`. Choose the following options:
 
@@ -635,7 +635,7 @@ Pat yourself on the back for getting through annotation!
 
 ## Removing Chimeras
 
-Unfortunately, not everything we annotate with Venomancer or manually is real. Some of the transcripts represent artifacts of *de novo* transcriptome assembly where two or more transcripts are accidentally merged into one creating **chimeras**. We need to filter out **chimeras** to produce the *true* transcriptome.
+Unfortunately, not everything we annotate with ToxCodAn or manually is real. Some of the transcripts represent artifacts of *de novo* transcriptome assembly where two or more transcripts are accidentally merged into one creating **chimeras**. We need to filter out **chimeras** to produce the *true* transcriptome.
 
 [**ChimeraKiller**](https://github.com/masonaj157/ChimeraKiller) is designed to identify chimeric sequences. It starts by mapping the reads to your annotated transcripts. ChimeraKiller then looks at each site along a transcript and determines the average coverage to the left and right of that position. At chimeric sites, the reads from the two transcripts will butt up against one another. Therefore, as you near chimeric sites the discrepency in the number of bases to the left and right will increase. For example, if the average number of bases per read to the left is 10 and the average number of bases per read to the right is 200, the difference between them is 190. Using a percent difference threshold, the transcript will be removed.
 
@@ -679,7 +679,7 @@ parallel -a list.txt -j 2 --verbose "echo {}
 
 ## Annotation Check (*Optional*)
 
-[Venomancer](https://github.com/pedronachtigall/Venomancer) and `NonToxinAnnotation.py` are designed to predict CDS and annotate things potentially missed by Venomancer and even keep uncharacterized transcripts. This not only provides confidence in your transcriptome, but facilitates novel toxin discovery. Specifically, by estimating expression of all transcripts including those that remain uncharacterized, you might discover a new toxin given it's high expression level. 
+[ToxCodAn](https://github.com/pedronachtigall/ToxCodAn) and `NonToxinAnnotation.py` are designed to predict CDS and annotate things potentially missed by ToxCodAn and even keep uncharacterized transcripts. This not only provides confidence in your transcriptome, but facilitates novel toxin discovery. Specifically, by estimating expression of all transcripts including those that remain uncharacterized, you might discover a new toxin given it's high expression level. 
 
 However, there are a couple other optional steps you might be able to take to make sure you don’t miss anything. Primarily,
 
@@ -773,14 +773,14 @@ We have also included two **R Scripts** to facilitate **formatting** RSEM/kallis
 
 ### autoplot.R
 ```{bash}
-cd /path/to/Venomancer/Guide
+cd /path/to/ToxCodAn/Guide
 
 # Bothrops alternatus raw RSEM output
-# These data followed Venomancer Guide and had "TOXIN" appended to each sequence
+# These data followed ToxCodAn Guide and had "TOXIN" appended to each sequence
 ./autoplot.R -i example_data/Balte-SB0022CVR.genes.results -s Balte-SB0022CVR
 
 # Crotalus cerastes raw RSEM output
-# These data did NOT follow Venomancer Guide or have "TOXIN" appended to sequences.
+# These data did NOT follow ToxCodAn Guide or have "TOXIN" appended to sequences.
 # Here, we add the --iforgot flag to change the internal grep search. 
 ./autoplot.R -i example_data/Ccera-CLP2057.genes.results -s Ccera-CLP2057 --iforgot
 
@@ -812,7 +812,7 @@ We do not have to use `autoplot.R`, but instead can make each of the subplots in
 First we need to `source` the R script. This script will also attempt to install many of the required packages. 
 
 ```{r}
-#setwd("path/to/Venomancer/Guide")
+#setwd("path/to/ToxCodAn/Guide")
 source("./PlottingFunctions.R")
 ```
 
