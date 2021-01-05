@@ -81,6 +81,9 @@ Options:
   -p boolean value, --signalp=boolean value
                         Optional - turn on/off the signalP filtering step, use
                         True to turn on or False to turn off [default=True]
+  -P boolean value, --partial=boolean value
+                        Optional - turn on/off the partial filtering step, use
+                        True to turn on or False to turn off [default=False]
   -n path, --nontoxinannotation=path
                         Optional - path to folder containing the protein DB
                         and CodAn model to be used in the NonToxin Annotation
