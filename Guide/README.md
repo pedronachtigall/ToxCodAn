@@ -414,7 +414,7 @@ conda deactivate
 
 ### Combining Assemblies
 
-Now that we have our three assemblies complete, we can combine them into one before annotation. Each of the assemblers produces a fasta file of assembled contigs with complex names. We can just go ahead and rename each of those as contig1, contig2, …, contigX. There are many ways to do this and we provide an example of how to do this with `awk`, but we recommend using [**`Fasta_Renamer.py`**](https://github.com/reptilerhett/Bioinformatics), which is a script to rename fasta headers sequentially.
+Now that we have our three assemblies complete, we can combine them into one before annotation. Each of the assemblers produces a fasta file of assembled contigs with complex names. We can just go ahead and rename each of those as contig1, contig2, …, contigX. There are many ways to do this and we provide an example of how to do this with `awk`, but we recommend using [**`Fasta_Renamer.py`**](https://github.com/RhettRautsaw/Bioinformatics), which is a script to rename fasta headers sequentially.
 
 Here, I’m copying the final assemblies from each assembler, renaming them, and concatenating them together into a combined assembly. After this, we run [**cd-hit**](http://weizhongli-lab.org/cd-hit/) to remove transcripts with 100% identity to reduce redundancy and computational load for annotation.
 
@@ -437,7 +437,7 @@ for i in `cat list.txt`
 
 OR
 
-**Option 2:** [**`Fasta_Renamer.py`**](https://github.com/reptilerhett/Bioinformatics)
+**Option 2:** [**`Fasta_Renamer.py`**](https://github.com/RhettRautsaw/Bioinformatics)
 
 ``` bash
 parallel -a list.txt -j 2 --verbose "echo {}
@@ -620,7 +620,7 @@ parallel -a list.txt -j 2 --verbose "echo {}
 
 #### **Remove Duplicates and Ambiguities**
 
-Our fasta of annotated transcripts likely has a lot of duplicate sequences and sequences with ambiguities. We want to get rid of these. To do that we can use [`RemAmbRemDup.py`](https://github.com/reptilerhett/Bioinformatics).
+Our fasta of annotated transcripts likely has a lot of duplicate sequences and sequences with ambiguities. We want to get rid of these. To do that we can use [`RemAmbRemDup.py`](https://github.com/RhettRautsaw/Bioinformatics).
 
 ``` bash
 parallel -a list.txt -j 2 --verbose "echo {}
@@ -710,7 +710,7 @@ You can use quantitative mass spectrometry (qMS) to help identify important prot
 
 Scaffold will show you which ORFs had proteomic matches which you can then export (`{}_Scaffold.pro`), cluster to your annotated transcriptome, and annotate what remains with BLAST.
 
-The script [**QTIBAC**](https://github.com/reptilerhett/QTIBAC) can help do this automatically. QTIBAC is a wrapper script which uses [**BLAST**](https://blast.ncbi.nlm.nih.gov/Blast.cgi), [**cd-hit**](http://weizhongli-lab.org/cd-hit/), and [**ChimeraKiller**](https://github.com/masonaj157/ChimeraKiller) to cluster proteomically (quantitative mass spectrometry/qMS) identified ORFs to your transcriptome, blast them to a provided database (or to the NR database on Genbank), and remove chimeric ORFs.
+The script [**QTIBAC**](https://github.com/RhettRautsaw/QTIBAC) can help do this automatically. QTIBAC is a wrapper script which uses [**BLAST**](https://blast.ncbi.nlm.nih.gov/Blast.cgi), [**cd-hit**](http://weizhongli-lab.org/cd-hit/), and [**ChimeraKiller**](https://github.com/masonaj157/ChimeraKiller) to cluster proteomically (quantitative mass spectrometry/qMS) identified ORFs to your transcriptome, blast them to a provided database (or to the NR database on Genbank), and remove chimeric ORFs.
 
 ``` bash
 parallel -a list.txt -j 2 --verbose "echo {}
@@ -720,7 +720,7 @@ parallel -a list.txt -j 2 --verbose "echo {}
 
 ### ORF Expression Check
 
-If you do not have a proteome, you can still check the expression of the ORFs to determine if you might have missed something important in your transcriptome. To do this, estimate expression of all ORFs using [**RSEM**](https://github.com/deweylab/RSEM) and use the results to make a list of the top X most highly expressed ORFs. Using grep, you can then extract those ORFs and use our proteomic friend [**QTIBAC**](https://github.com/reptilerhett/QTIBAC) in the same manner.
+If you do not have a proteome, you can still check the expression of the ORFs to determine if you might have missed something important in your transcriptome. To do this, estimate expression of all ORFs using [**RSEM**](https://github.com/deweylab/RSEM) and use the results to make a list of the top X most highly expressed ORFs. Using grep, you can then extract those ORFs and use our proteomic friend [**QTIBAC**](https://github.com/RhettRautsaw/QTIBAC) in the same manner.
 
 ``` bash
 parallel -a list.txt -j 2 --verbose "echo {}
