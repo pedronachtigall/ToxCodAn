@@ -49,7 +49,7 @@ def translate(seq):
 	protein =""
 	if len(seq)%3 == 0:
 		for i in range(0, len(seq), 3):
-			codon = seq[i:i + 3]
+			codon = str(seq[i:i + 3]).upper()
 			if any(base in codon for base in ambiguities):
 				protein+="X"
 			else:
