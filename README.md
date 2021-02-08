@@ -40,7 +40,7 @@ Ensure that all requirements are working properly.
 
 :warning: If the user wants to install ToxCodAn and all dependencies using [Conda environment](https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html), follow the steps below:
 - Create the environment:
-    - ```conda create -n toxcodan_env python=3.7 biopython=1.69 perl perl-bioperl perl-mce blast diamond```
+    - ```conda create -n toxcodan_env python=3.6 biopython=1.69 perl perl-bioperl perl-mce blast diamond```
 - Git clone the ToxCodAn repository and add to your PATH:
     - ```git clone https://github.com/pedronachtigall/ToxCodAn.git```
     - ```export PATH=$PATH:path/to/ToxCodAn/bin/```
