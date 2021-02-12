@@ -35,12 +35,13 @@ export PATH=$PATH:path/to/ToxCodAn/bin/
 - [NCBI-BLAST](https://www.ncbi.nlm.nih.gov/books/NBK279671/) (v2.9.0 or above)
 - [SignalP-4.1](http://www.cbs.dtu.dk/cgi-bin/sw_request?signalp+4.1)
 - [DIAMOND](https://github.com/bbuchfink/diamond) (v2.0.6 or higher) - Optional tool (to increase speed in NonToxin annotation step)
+- [hmmer](http://hmmer.org/) - Optional tool (to perform BUSCO and Pfam scans in NonToxin annotation steps)
 
 Ensure that all requirements are working properly.
 
 :warning: If the user wants to install ToxCodAn and all dependencies using [Conda environment](https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html), follow the steps below:
 - Create the environment:
-    - ```conda create -n toxcodan_env python=3.7 biopython=1.76 perl perl-bioperl perl-mce blast diamond```
+    - ```conda create -n toxcodan_env python=3.7 biopython=1.76 perl perl-bioperl perl-mce blast diamond hmmer```
 - Git clone the ToxCodAn repository and add to your PATH:
     - ```git clone https://github.com/pedronachtigall/ToxCodAn.git```
     - ```export PATH=$PATH:path/to/ToxCodAn/bin/```
