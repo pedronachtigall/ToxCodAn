@@ -34,6 +34,7 @@ export PATH=$PATH:path/to/ToxCodAn/bin/
 - [CodAn](https://github.com/pedronachtigall/CodAn/)
 - [NCBI-BLAST](https://www.ncbi.nlm.nih.gov/books/NBK279671/) (v2.9.0 or above)
 - [SignalP-4.1](http://www.cbs.dtu.dk/cgi-bin/sw_request?signalp+4.1)
+- [HMMER](http://hmmer.org/download.html) (used in NonToxin annotation step - which is optional)
 - [DIAMOND](https://github.com/bbuchfink/diamond) (v2.0.6 or higher) - Optional tool (to increase speed in NonToxin annotation step)
 
 Ensure that all requirements are working properly.
