@@ -54,6 +54,8 @@ def _GetOutput_(blast, fasta, folder, prefix):
                 end = int(j2[1])
                 SEQ = FASTA[j]
                 hit = BLAST[k][1]
+                if end+3 <= len(SEQ):
+                    end = end+3
                 #write contigs
                 seq = "\n".join([SEQ[n:n+100] for n in range(0, len(SEQ), 100)])
                 PTcontigs.write(">"+k+"||"+hit+"\n"+seq+"\n")

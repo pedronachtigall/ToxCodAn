@@ -34,6 +34,7 @@ export PATH=$PATH:path/to/ToxCodAn/bin/
 - [CodAn](https://github.com/pedronachtigall/CodAn/)
 - [NCBI-BLAST](https://www.ncbi.nlm.nih.gov/books/NBK279671/) (v2.9.0 or above)
 - [SignalP-4.1](http://www.cbs.dtu.dk/cgi-bin/sw_request?signalp+4.1)
+- [HMMER](http://hmmer.org/download.html) (used in NonToxin annotation step - which is optional)
 - [DIAMOND](https://github.com/bbuchfink/diamond) (v2.0.6 or higher) - Optional tool (to increase speed in NonToxin annotation step)
 - [hmmer](http://hmmer.org/) - Optional tool (to perform BUSCO and Pfam scans in NonToxin annotation steps)
 
@@ -165,10 +166,11 @@ The user can take advantages of a simple script designed to annotate Non Toxin t
 - This script takes advantage of MultiThreading by using the option `-c`.
 - Usage: ```NonToxinAnnotation.py -t path/to/output/NonToxins_codan/ORF_sequences.fasta -d path/to/db1,...,path/to/dbN -b path/to/busco/odb -p path/to/pfam.hmm -c N```
 
-:warning: **[Attention 1]** If the user wants to speed up the process and use DIAMOND tool in the NonToxin annotation, just follow the steps below:
-- First, design the diamond DB by using a set of protein sequences: ```diamond makedb --in proteins.fasta -d diamondDB```
+:warning: **[Attention 1]** If the user wants to speed up the process and use [DIAMOND](https://github.com/bbuchfink/diamond) tool in the NonToxin annotation, just follow the steps below:
+- The diamond tool can be installed through the command: ```conda install -c bioconda diamond```.
+- Design the diamond DB by using a set of protein sequences: ```diamond makedb --in proteins.fasta -d diamondDB```.
 - Then, use the ```NonToxinAnnotation.py``` on the predicted CDSs by setting the option ```-s diamond``` and the diamond DB in the ```-b``` option.
-    - ```NonToxinAnnotation.py -s diamond -t path/to/output/NonToxins_codan/ORF_sequences.fasta -d path/to/diamondDB -c N```
+    - ```NonToxinAnnotation.py -s diamond -t path/to/output/NonToxins_codan/ORF_sequences.fasta -d path/to/diamondDB -c N```.
     - Keep the ```-b path/to/busco/odb -p path/to/pfam.hmm``` options to perform the hmm search using BUSCO and Pfam models as described above.
 
 :warning: **[Attention 2]** Alternatively, if the user wants to directly perform the NonToxins annotation within the ToxCodAn pipeline just follow the steps below:
