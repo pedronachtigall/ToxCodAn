@@ -4,7 +4,7 @@ ToxCodAn
 ========
 <!---[![Latest GitHub release](https://img.shields.io/github/release/pedronachtigall/ToxCodAn.svg)](https://github.com/pedronachtigall/ToxCodAn/releases/latest) -->
 <!---[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3403273.svg)](https://doi.org/10.5281/zenodo.3403273) -->
-<!---[![Published in Genome Biology](https://img.shields.io/badge/published%20in-Genome%20Biology-blue.svg)](https://doi.org/10.1101/gr.214270.116) -->
+[![Published in Briefings in Bioinformatics](https://img.shields.io/badge/published%20in-Briefings%20in%20Bioinformatics-blue)](https://doi.org/10.1093/bib/bbab095)
 
 **ToxCodAn** is a computational tool designed to detect and annotate toxin genes in transcriptome assembly.
 
@@ -182,9 +182,9 @@ The user can take advantages of a simple script designed to annotate Non Toxin t
 Reference
 =========
 
-If you use or discuss **ToxCodAn**, please cite:
+If you use or discuss **ToxCodAn**, its guide, or any script available at this repository, please cite:
 
-Nachtigall et al., under review
+Nachtigall et al. (2021) ToxCodAn: a new toxin annotator and guide to venom gland transcriptomics. Briefings in Bioinformatics. DOI:[https://doi.org/10.1093/bib/bbab095](https://doi.org/10.1093/bib/bbab095)
 
 License
 =======
