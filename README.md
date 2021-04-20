@@ -208,7 +208,7 @@ Frequently Asked Questions (FAQ)
 
 **[Q3]** Is ToxCodAn only available for snake species? :snake:
   - Unfortunately, we only acquired sufficient trainning data for snake toxins. But we are working to get more training data to other venomous taxa and make them available soon. Stay tune!
-  - If you are working with non-snake venomous taxa and believe that you reseach group has enough training data to design specific models, please contact me. I will be happy to collaborate and make it happen.
+  - If you are working with other venomous taxa and believe that your research group has enough training data to design specific models, please contact me. I will be happy to collaborate and make it happen.
 
 **[Q4]** When was the ToxCodAn's Databases last updated?
   - Our models and databases used for annotations were last updated in September 2020.
