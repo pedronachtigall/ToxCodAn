@@ -8,6 +8,8 @@ ToxCodAn
 
 **ToxCodAn** is a computational tool designed to detect and annotate toxin genes in transcriptome assembly.
 
+The guide for venom gland transcriptomics is available [here](https://github.com/pedronachtigall/ToxCodAn/tree/master/Guide)
+
 Getting Started
 =================
 
