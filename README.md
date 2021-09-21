@@ -43,18 +43,14 @@ Ensure that all requirements are working properly.
 
 :warning: If the user wants to install ToxCodAn and all dependencies using [Conda environment](https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html), follow the steps below:
 - Create the environment:
-    - ```conda create -n toxcodan_env python=3.6 biopython=1.69 perl perl-bioperl perl-mce blast hmmer```
+    - ```conda create -n toxcodan_env -c bioconda python=3.6 biopython=1.69 codan blast hmmer```
 - Git clone the ToxCodAn repository and add to your PATH:
     - ```git clone https://github.com/pedronachtigall/ToxCodAn.git```
     - ```export PATH=$PATH:path/to/ToxCodAn/bin/```
-- Git clone the CodAn repository and add to your PATH:
-    - ```git clone https://github.com/pedronachtigall/CodAn.git```
-    - ```export PATH=$PATH:path/to/CodAn/bin/```
 - Download the SignalP-4.1, decompress and add it to your PATH:
     - ```tar -xzf signalp-4.1g.Linux.tar.gz```
     - ```export PATH=$PATH:path/to/signalp-4.1/```
 - It may be needed to apply "execution permission" to all bin executables in "CodAn/bin" and "ToxCodAn/bin/":
-    - ```chmod 777 path/to/CodAn/bin/*```
     - ```chmod 777 path/to/ToxCodAn/bin/*```
 - Then, run ToxCodAn as described in the "Usage" section.
 - To activate the environment to run ToxCodAn just use the command: ```conda activate toxcodan_env```
