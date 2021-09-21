@@ -50,14 +50,15 @@ Ensure that all requirements are working properly.
 - Download the SignalP-4.1, decompress and add it to your PATH:
     - ```tar -xzf signalp-4.1g.Linux.tar.gz```
     - ```export PATH=$PATH:path/to/signalp-4.1/```
-    - Change the line number 13 of "signalp" (path/to/signalp-4.1/signalp) to ```$ENV{SIGNALP} = 'path/to/signalp-4.1/';```
+    - Change the line number 13 of "signalp" (path/to/signalp-4.1/signalp) to:
+        - ```$ENV{SIGNALP} = 'path/to/signalp-4.1/';```
 - It may be needed to apply "execution permission" to all bin executables in "CodAn/bin" and "ToxCodAn/bin/":
     - ```chmod 777 path/to/ToxCodAn/bin/*```
 - Then, run ToxCodAn as described in the "Usage" section.
 - To activate the environment to run ToxCodAn just use the command: ```conda activate toxcodan_env```
 - To deactivate the environment just use the command: ```conda deactivate```
 
-- :warning:Ensure that you have added all channels to conda properly:
+- :warning:**Tip**:warning: Ensure that you have added all conda channels properly:
     - ```conda config --add channels defaults && conda config --add channels bioconda && conda config --add channels conda-forge```
 
 # Models
