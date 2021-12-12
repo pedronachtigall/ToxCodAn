@@ -8,8 +8,10 @@ import sys
 import os
 from Bio import SeqIO
 from Bio.Seq import Seq
-from Bio.Alphabet import generic_dna
-from collections import defaultdict
+try:
+    from Bio.Alphabet import generic_dna
+except ImportError:
+    generic_dna = Nonefrom collections import defaultdict
 
 def _ParseFasta_(fasta):
     final = {}
@@ -65,7 +67,10 @@ def _GetOutput_(blast, fasta, folder, prefix):
                 cds = "\n".join([CDS[n:n+100] for n in range(0, len(CDS), 100)])
                 PTcds.write(">"+k+"||"+hit+"\n"+cds+"\n")
                 #translate CDSs
-                CodingDna = Seq(CDS, generic_dna)
+                if generic_dna:
+                    CodingDna = Seq(SEQ, generic_dna)
+                else:
+                    CodingDna = Seq(SEQ)
                 pep = str(CodingDna.translate(table=1))
                 PTpep.write(">"+k+"||"+hit+"\n"+pep+"\n")
                 ADDED.append(k)
