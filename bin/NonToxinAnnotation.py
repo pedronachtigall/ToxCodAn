@@ -5,12 +5,15 @@
 try:
     from Bio import SeqIO
     from Bio.Seq import Seq
-    from Bio.Alphabet import generic_dna
 except:
     print('''ERROR!!!
     The biopython package is not properly installed or it is not active in your actual environment.
     Please, install biopython properly (check https://biopython.org/ for more details), or active the environment where biopython is installed!''')
     quit()
+try:
+    from Bio.Alphabet import generic_dna
+except ImportError:
+    generic_dna = None
 import os
 import datetime as dt
 from optparse import OptionParser
@@ -19,7 +22,10 @@ from optparse import OptionParser
 def _translateCDS_(nonannotated):
     translated = {}
     for k in nonannotated.keys():
-        cds = Seq(nonannotated[k], generic_dna)
+        if generic_dna:
+            cds = Seq(nonannotated[k], generic_dna)
+        else:
+            cds = Seq(nonannotated[k])
         protein = str(cds.translate())
         translated[k] = protein
     return translated
