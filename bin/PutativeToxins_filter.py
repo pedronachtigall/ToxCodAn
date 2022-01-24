@@ -11,7 +11,8 @@ from Bio.Seq import Seq
 try:
     from Bio.Alphabet import generic_dna
 except ImportError:
-    generic_dna = Nonefrom collections import defaultdict
+    generic_dna = None
+from collections import defaultdict
 
 def _ParseFasta_(fasta):
     final = {}
