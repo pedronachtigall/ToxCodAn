@@ -489,6 +489,8 @@ For nontoxin annotation, we will take the Nontoxin output from [ToxCodAn](https:
 - (Optional) Download the desired BUSCO models [here](https://busco-data.ezlab.org/v4/data/lineages/) and decompress the odb with `tar -xvzf busco_odb.tar.gz`
 	- Recommend the tetrapod or aves odb for snakes.
 - (Optional) Download the Pfam models (<a href="ftp://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.hmm.gz" class="uri">ftp://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.hmm.gz</a>) and decompress with `gunzip Pfam-A.hmm.gz`
+	- Please, notice that you may need to design auxfiles for the Pfam models before first use: `hmmpress Pfam-A.hmm`
+
 
 ``` bash
 parallel -a list.txt -j 2 --verbose "echo {}
