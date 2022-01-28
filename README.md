@@ -164,7 +164,8 @@ The user can take advantages of a simple script designed to annotate Non Toxin t
     - The user can use a DB such as Swissprot and/or the designed protein DB available at the "non_toxin_models" folder (just uncompress the DB ```tar xjf pepDB.tar.bz2```).
     - The user can set one or more DBs by using a comma "," among DBs, which can be any number (from 1 to N).
 - Optionally, the user can set any of the [BUSCO models](https://busco.ezlab.org/busco_v4_data.html) to perform hmm search by using the option `-b`.
-- Optionally, the user can set the [Pfam models](https://pfam.xfam.org/) to perform hmm search by using the option `-p`. (link for download the pfam.hmm: ftp://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.hmm.gz)
+- Optionally, the user can set the [Pfam models](https://pfam.xfam.org/) to perform hmm search by using the option `-p`. (link for download the pfam.hmm: ftp://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.hmm.gz and decompress the model with `gunzip Pfam-A.hmm.gz`)
+	- Please, notice that you may need to design auxfiles for the Pfam models before first use: `hmmpress Pfam-A.hmm`
 - This script takes advantage of MultiThreading by using the option `-c`.
 - Usage: ```NonToxinAnnotation.py -t path/to/output/NonToxins_codan/ORF_sequences.fasta -d path/to/db1,...,path/to/dbN -b path/to/busco/odb -p path/to/pfam.hmm -c N```
 
