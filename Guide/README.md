@@ -525,7 +525,126 @@ parallel -a list.txt -j 2 --verbose "echo {}
 >toxcodan.py -s sampleID -t assembly.fasta -o out_toxcodan -m /path/to/models -c 4 -n path/to/non_toxin_models/
 >```
 
+### Cleaning up ToxCodAn's output
 
+We designed a set of three scripts that may help to improve the toxin annotation step by decreasing the number of false-positives.
+This set of scripts were designed to decrease the workload of manual curation and must be used with severe caution.
+
+
+<details>
+<summary>Expand "Cleaning up ToxCodAn's output" Section</summary>
+
+
+For this step, you may need some extra tools (i.e., bwa, bowtie2, samtools, bedtools, RSEM) that can be easily installed through conda: ``` conda install -c bioconda bwa bowtie2 samtools mafft rsem```
+ - You may also need to install the python package [dfply](https://pypi.org/project/dfply/): ```pip install dfply```
+
+### SeparateToxinsPerfamily
+
+The script "SeparateToxinsPerfamily.py" allows to output each toxin family separately.
+```
+Script designed to generate specific toxin files from ToxCodAn's output
+Basic usage: SeparateToxinsPerfamily.py Toxins.fasta output_folder
+	> Toxins.fa: input file in fasta format [Toxins and/or PutativeToxins output by ToxCodAn]
+	> output_folder: folder to output the separated files
+```
+
+### ToxcodanCleaner
+
+The script "ToxcodanCleaner.py" was designed to clean spurious sequences based on alignment of each toxin family, correct sequences with an erroneous start codon position, and also cluster sequences with similar size above a specific threshold of percentage identity.
+```
+Usage: ToxcodanCleaner.py [options]
+
+Options:
+  -h, --help            show this help message and exit
+  -i fasta, --input=fasta
+                        Mandatory - CDSs of a toxin family output by ToxCodAn
+                        in FASTA format, /path/to/TOXIN_cds.fasta
+  -m int, --minsize=int
+                        Optional - threshold value used as the minimum size of
+                        the CDSs of the toxin family to be filter
+                        [default=200]
+  -M int, --maxsize=int
+                        Optional - threshold value used as the maximum size of
+                        the CDSs of the toxin family to be filter
+                        [default=4000]
+  -p boolean value, --partial=boolean value
+                        Optional - turn on/off the partial filtering step, use
+                        True to turn on or False to turn off [default=False]
+  -C float, --cluster=float
+                        Optional - turn on/off the cluster step, set any
+                        threshold [e.g., 0.99 to cluster 99% similar sequences
+                        with similar size] to turn on [default=False]
+  -c int, --cpu=int     Optional - number of threads to be used [default=1]
+```
+
+### CoverageCheck
+
+The script "CoverageCheck.py" were designed to clean spurious sequences based on alignment, correct sequences with an erroneous start codon position, and also cluster sequences with similar size above a specific threshold of percentage identity. It can be easily modified to handle with any toxin family.
+ - It maps the merged reads to remove spurious sequences based on coverage.
+   - step-1: the script removes any transcript with less than 5x coverage in more than 10% of the transcript, but it also removes any transcript with zero coverage at any position
+   - step-2: the script removes any transcript with 0.0 TPM (i.e., which may contains only multi-mapped reads with secondary alignments and likely represents a chimera)
+```
+usage: CoverageCheck.py [-h] [-i INPUT] [-r READS] [-c COV] [-p PROP] [-e EXP] [-m MR] [-t THREADS]
+
+Check read coverage within transcripts to remove transcripts with low coverage across a certain percentage
+of the contig/transcript and transcripts containing only multi-mapped reads. This may be indicitive of a
+misassembly or false-positive annotation. Default is to check for transcripts with <5x coverage for >10% of
+the total contig/transcript length and remove sequences with 0.0 TPM/FPKM expression level.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i INPUT, --input INPUT
+                        Fasta file of contigs/transcripts to check. Use only CODING SEQUENCES.
+  -r READS, --reads READS
+                        Fastq file of UNPAIRED reads.
+  -c COV, --cov COV     Coverage threshold. (default: 5)
+  -p PROP, --prop PROP  Proportion of the contig/transcript. (default: 10)
+  -e EXP, --exp EXP     Expression value (in TPM) to be used as threshold to filter low expressed
+                        contigs/transcripts, which may be a result of only multi-mapped reads in the
+                        contig/transcript. (default: 0.0)
+  -m MR, --mr MR        The maximum mismatch rate allowed to be set in RSEM parameter "--bowtie2-mismatch-
+                        rate" (to be used in Bowtie2 mapping), which by default is 0.1 (as specified by
+                        RSEM manual). (default: 0.1)
+  -t THREADS, --threads THREADS
+                        Number of processing threads. (default: 1)
+```
+
+### Running the ToxCodAnCleaner pipeline
+
+This set of scripts can be used as described below:
+ - Please notice that the paremeters for specific toxins commonly detected in *Bothrops* and *Crotalus* species. Adjust this pipeline and parameters accordingly to the toxin families and species being analyzed.
+ - We strongly recommend to use the "{}_Toxins.fasta" (as mentioned in the begninning of the [Transcriptome Annotation](https://github.com/pedronachtigall/ToxCodAn/tree/master/Guide#toxcodan) section.
+```bash
+#separate all toxins per family
+SeparateToxinsPerfamily.py {}_Toxins.fasta {}_perfamily
+
+#run ToxCodAnCleaner for any toxin that is hard to perform manual curation (due to the high amount of sequences)
+ToxcodanCleaner.py -i {}_perfamily/SVMP_{}_Toxins.fasta -m 600 -M 2000 -p True -C 0.99 -c 8
+ToxcodanCleaner.py -i {}_perfamily/SVSP_{}_Toxins.fasta -m 550 -M 900 -p True -C 0.99 -c 8
+ToxcodanCleaner.py -i {}_perfamily/CTL_{}_Toxins.fasta -m 300 -M 600 -p True -C 0.99 -c 8
+ToxcodanCleaner.py -i {}_perfamily/PLA2_{}_Toxins.fasta -m 200 -M 600 -p True -C 0.99 -c 8
+ToxcodanCleaner.py -i {}_perfamily/BPP_{}_Toxins.fasta -m 200 -M 800 -p True -C 0.99 -c 8
+
+#concatenate the toxin families into a single file to run further steps and/or perform manual curation
+for i in $(ls {}_perfamily/ | awk -F"_" '{print $1}' | sort | uniq); do
+    if [ $i == "SVMP" ] || [ $i == "SVSP" ] || [ $i == "CTL" ] || [ $i == "PLA2" ] || [ $i == "BPP" ];
+    then
+        cat {}_perfamily/${i}_{}_Toxins_CLEAN_CLST.fasta >> {}_Toxins_CLEAN.fasta
+    else
+        cat {}_perfamily/${i}_{}_Toxins.fasta >> {}_Toxins_CLEAN.fasta
+    fi
+done
+
+#run CoverageCheck to remove low coverage and lowly epxressed sequences
+CoverageCheck.py -i {}_Toxins_CLEAN.fasta -r {}_pear.assembled.fastq.gz -t 8
+
+#use the {}_Toxins_CLEAN_FILTERED.fasta in further steps (to perform manual curation, CK, and so on)
+```
+
+:warning: Please, if you don't have sure if this set of scripts may not be removing only false-positive toxins, perform some manual checks after every filtering step to ensure that only false-positive toxins (and/or chimeras) are being removed.
+
+</details>
+<br>
 
 ### Manual Annotation
 
@@ -651,7 +770,7 @@ parallel -a list.txt -j 2 --verbose "echo {}
 conda deactivate
 ```
 
-It is now a good idea to manually check the decisions made by ChimeraKiller. After we check the calls by ChimeraKiller we can concatenate the good fastas together. We will do this in the next section…
+:warning: It is now a good idea to manually check the decisions made by ChimeraKiller. After we thoroughly check the calls by ChimeraKiller, we can concatenate the good fastas together. We will do this in the next section…
 
 ## Clustering
 
