@@ -535,7 +535,8 @@ This set of scripts were designed to decrease the workload of manual curation an
 <summary>Expand "Cleaning up ToxCodAn's output" Section</summary>
 
 
-For this step, you may need some extra tools (i.e., bwa, bowtie2, samtools, bedtools, RSEM) that can be easily installed through conda: ``` conda install -c bioconda bwa bowtie2 samtools mafft rsem```
+For this step, you may need some extra tools (i.e., [bwa](http://bio-bwa.sourceforge.net/), [bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/), [samtools](http://www.htslib.org/doc/samtools.html), [bedtools](https://bedtools.readthedocs.io/en/latest/), [RSEM](https://github.com/deweylab/RSEM) ).
+ - It can be easily installed through conda: ``` conda install -c bioconda bwa bowtie2 samtools mafft rsem```
  - You may also need to install the python package [dfply](https://pypi.org/project/dfply/): ```pip install dfply```
 
 ### SeparateToxinsPerfamily
@@ -613,7 +614,7 @@ optional arguments:
 
 This set of scripts can be used as described below:
  - Please notice that the paremeters for specific toxins commonly detected in *Bothrops* and *Crotalus* species. Adjust this pipeline and parameters accordingly to the toxin families and species being analyzed.
- - We strongly recommend to use the "{}_Toxins.fasta" (as mentioned in the begninning of the [Transcriptome Annotation](https://github.com/pedronachtigall/ToxCodAn/tree/master/Guide#toxcodan) section.
+ - We strongly recommend to use the "{}_Toxins.fasta" (as mentioned in the begninning of the [Transcriptome Annotation](https://github.com/pedronachtigall/ToxCodAn/tree/master/Guide#toxcodan) section).
 ```bash
 #separate all toxins per family
 SeparateToxinsPerfamily.py {}_Toxins.fasta {}_perfamily
@@ -641,7 +642,7 @@ CoverageCheck.py -i {}_Toxins_CLEAN.fasta -r {}_pear.assembled.fastq.gz -t 8
 #use the {}_Toxins_CLEAN_FILTERED.fasta in further steps (to perform manual curation, CK, and so on)
 ```
 
-:warning: Please, if you don't have sure if this set of scripts may not be removing only false-positive toxins, perform some manual checks after every filtering step to ensure that only false-positive toxins (and/or chimeras) are being removed.
+:warning: Please, if you don't have sure if this set of scripts may be removing some true-positive toxins, perform some manual checks after every filtering step to ensure that only false-positive toxins (and/or chimeras) are being removed.
 
 </details>
 <br>
