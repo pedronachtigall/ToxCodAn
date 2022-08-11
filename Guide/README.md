@@ -478,7 +478,7 @@ parallel -a list.txt -j 2 --verbose "echo {}
 
 ### Nontoxin Annotation
 
-For nontoxin annotation, we will take the Nontoxin output from [ToxCodAn](https://github.com/pedronachtigall/ToxCodAn) (`{}_NonToxins_contigs.fasta`) and use [CodAn](https://github.com/pedronachtigall/CodAn) to predict to predict the coding sequence (CDS) regions, using the [VERTEBRATE model (VERT_full)](https://github.com/pedronachtigall/CodAn/blob/master/models). The CodAn-predicted CDS regions will be used as input for ToxCodAn’s `NonToxinAnnotation.py` which uses [**BLAST**](https://blast.ncbi.nlm.nih.gov/Blast.cgi), [**BUSCO**](https://busco.ezlab.org/) (optional), and [**Pfam**](http://pfam.xfam.org/) (optional) to annotate the predicted CDSs. 
+For nontoxin annotation, we will take the Nontoxin output from [ToxCodAn](https://github.com/pedronachtigall/ToxCodAn) (`{}_NonToxins_contigs.fasta`) and use [CodAn](https://github.com/pedronachtigall/CodAn) to predict the coding sequence (CDS) regions, using the [VERTEBRATE model (VERT_full)](https://github.com/pedronachtigall/CodAn/blob/master/models). The CodAn-predicted CDS regions will be used as input for ToxCodAn’s `NonToxinAnnotation.py` which uses [**BLAST**](https://blast.ncbi.nlm.nih.gov/Blast.cgi), [**BUSCO**](https://busco.ezlab.org/) (optional), and [**Pfam**](http://pfam.xfam.org/) (optional) to annotate the predicted CDSs. 
 
 **NOTE:** This step keeps the uncharacterized proteins for potential novel toxin discovery.
 
@@ -487,7 +487,7 @@ For nontoxin annotation, we will take the Nontoxin output from [ToxCodAn](https:
 	- `makeblastdb -in uniprot_sprot.fasta -dbtype prot`
 - If the user wants, more than one proteinDB can be set in the `-d` option by using a comma “,” separating the DBs (*e.g.*, `path/to/db1,path/to/db2,…,path/to/dbN`).
 - (Optional) Download the desired BUSCO models [here](https://busco-data.ezlab.org/v4/data/lineages/) and decompress the odb with `tar -xvzf busco_odb.tar.gz`
-	- Recommend the tetrapod or aves odb for snakes.
+	- We recommend the tetrapod or aves odb for snakes.
 - (Optional) Download the Pfam models (<a href="ftp://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.hmm.gz" class="uri">ftp://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.hmm.gz</a>) and decompress with `gunzip Pfam-A.hmm.gz`
 	- Please, notice that you may need to design auxfiles for the Pfam models before first use: `hmmpress Pfam-A.hmm`
 
