@@ -133,7 +133,7 @@ def _BLASTsearch_(transcripts, outF, blastdb, coverage, evalue, cpu, search):
                 print("\n"+dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+" >>>> Performing DIAMOND search using DB"+str(n+1)+"!!!")
                 temp = outF+"temp.fa"
                 OUT = outF+"blast_"+str(n+1)+".out"
-                os.system("diamond blastx --query-cover "+coverage+" --threads "+cpu+" --evalue "+evalue+" --max-target-seqs 5 --strand plus --ultra-sensitive -d "+dblist[n]+" -q "+transcripts+" -o "+OUT+" --outfmt 6 qseqid qlen sseqid slen pident length mismatch qstart qend sstart send evalue bitscore stitle")
+                os.system("diamond blastx --query-cover "+coverage+" --threads "+cpu+" --evalue "+evalue+" --max-target-seqs 5 --strand plus --more-sensitive -d "+dblist[n]+" -q "+transcripts+" -o "+OUT+" --outfmt 6 qseqid qlen sseqid slen pident length mismatch qstart qend sstart send evalue bitscore stitle")
                 report = outF+"blast_"+str(n+1)+"_report.txt"
                 parsed = _ParseBlast_(OUT, report)
 
@@ -155,8 +155,7 @@ def _BLASTsearch_(transcripts, outF, blastdb, coverage, evalue, cpu, search):
         else: # if has only one DB
             print("\n"+dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+" >>>> Performing DIAMOND search!!!")
             OUT = outF+"blast.out"
-            #diamond blastx --query-cover 90 --threads 2 --max-target-seqs 5 --strand plus --ultra-sensitive -d diamondDB/pepDB -q Mfulv_NT_codan_RR.fa -o diamond_out.txt --outfmt 6 qseqid qlen sseqid slen pident length mismatch qstart qend sstart send evalue bitscore stitle
-            os.system("diamond blastx --query-cover "+coverage+" --threads "+cpu+" --evalue "+evalue+" --max-target-seqs 5 --strand plus --ultra-sensitive -d "+blastdb+" -q "+transcripts+" -o "+OUT+" --outfmt 6 qseqid qlen sseqid slen pident length mismatch qstart qend sstart send evalue bitscore stitle")
+            os.system("diamond blastx --query-cover "+coverage+" --threads "+cpu+" --evalue "+evalue+" --max-target-seqs 5 --strand plus --more-sensitive -d "+blastdb+" -q "+transcripts+" -o "+OUT+" --outfmt 6 qseqid qlen sseqid slen pident length mismatch qstart qend sstart send evalue bitscore stitle")
             report = outF+"blast_report.txt"
             parsed = _ParseBlast_(OUT, report)
 
