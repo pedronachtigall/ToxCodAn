@@ -314,6 +314,30 @@ toxcodan.py -t transcripts.fa -m path/to/models
         print("\tpartial filter -> ", options.partial)
         print("\tNumber of threads ->", options.cpu)
 
+        #check if fasta is lowercase
+        case = []
+        a = open(options.transcripts, "r")
+        for line in a:
+            if not line.startswith(">"):
+                if line.strip().isupper():
+                    case.append("UPPER")
+                elif line.strip().islower():
+                    case.append("LOWER")
+                else:
+                    case.append("NONE")
+        a.close()
+        if "LOWER" in case or "NONE" in case:
+            a = open(options.transcripts, "r")
+            upper = open(options.output+"transcripts.fasta", "w")
+            for line in a:
+                if line.startswith(">"):
+                    upper.write(line)
+                if not line.startswith(">"):
+                    upper.write(line.upper())
+            a.close()
+            upper.close()
+            options.transcripts = options.output+"transcripts.fasta"
+
         _ToxCodAn_(options.sample,
                     options.transcripts,
                     options.output,
