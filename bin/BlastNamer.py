@@ -63,7 +63,7 @@ def signalp(p, folder):
 	sp = "signalp -u 0.34 -U 0.34 "+folder+"signalp.fasta  > "+folder+"signalp.txt"
 	os.system(sp)
 	cut = 0
-	file = open(folder+"signalp.txt", "rU")
+	file = open(folder+"signalp.txt", "r")
 	for line in file:
 		if line[0] == "#":
 			line = line
