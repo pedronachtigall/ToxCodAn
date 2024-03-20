@@ -220,7 +220,7 @@ FancyFigure <- function(df=TPM_df2,id="Average",class="class",toxin_family="toxi
 
 ## Pairwise scatterplot of clr transformed expression data
 TransCompPlot<-function(df=TPM_df2,id1="CLP2057", id2="CLP2065",class="class",toxin_family="toxin_family",colors=toxin_colors,print=TRUE){
-  df2<-df %>% mutate_if(is.numeric,clr)
+  df2<-df %>% mutate_if(is.numeric, function(x) as.numeric(clr(x)))
   Nontoxins<-df2 %>% filter(!!as.name(class)=="Nontoxin")
   Toxins<-df2 %>% filter(!!as.name(class)=="Toxin")
   
